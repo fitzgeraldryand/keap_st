@@ -1,11 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import merge from 'lodash/merge';
 
 class LoginForm2 extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: '',
       password: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,7 +19,7 @@ class LoginForm2 extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
+    const user = merge({email: this.props.email}, this.state);
     this.props.processForm(user);
   }
 
@@ -42,17 +42,11 @@ class LoginForm2 extends React.Component {
           <br/>
           {this.props.formTypeHTML}
           <br/>
-          <h3>with your Google account</h3>
+          <h3> Welcome </h3>
+          <br/>
+          {this.props.email}
           {this.renderErrors()}
           <div className="login-form">
-            <br/>
-            <label>Email:
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                className="login-input"
-              />
-            </label>
             <br/>
             <label>Password:
               <input type="password"

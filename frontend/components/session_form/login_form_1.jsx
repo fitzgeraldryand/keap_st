@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import * as SessionAPIUtil from '../../util/session_api_util.js';
 import LoginForm2 from './login_form_2.jsx';
 import {
   Route,
@@ -25,10 +26,17 @@ class LoginForm1 extends React.Component {
     });
   }
 
+  componentDidMount () {
+    this.props.getUsers();
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-
-    this.setState({clicked: true});
+    if (Boolean(this.props.users[this.state.email])) {
+      this.setState({clicked: true});
+    } else {
+      this.props.receiveErrors(['Invalid email']);
+    }
   }
 
   renderErrors() {
@@ -46,33 +54,36 @@ class LoginForm1 extends React.Component {
   render() {
     if (!this.state.clicked) {
       return (
-        <div className="login-form-container">
-          <form className="login-form-box" onSubmit={this.handleSubmit}>
-            <br/>
-            {this.props.formTypeHTML}
-            <br/>
-            <h3>with your Google account</h3>
-            {this.renderErrors()}
-            <div className="login-form">
+        <div className="login-div">
+          <div className="login-form-container">
+            <form className="login-form-box" onSubmit={this.handleSubmit}>
+              <img className="logo" src='../../assets/google_logo.png'></img>
               <br/>
-              <label>Email:
-                <input type="text"
-                  value={this.state.email}
-                  onChange={this.update('email')}
-                  className="login-input"
-                />
-              </label>
+              <h1>Sign In</h1>
               <br/>
-              <input className="login1-submit" type="submit" value="Next"/>
-              <br/>
-              {this.props.navLink}
-            </div>
-          </form>
+              <p>with your Google account</p>
+              {this.renderErrors()}
+              <div className="login-form">
+                <br/>
+                <label>Email:
+                  <input type="text"
+                    value={this.state.email}
+                    onChange={this.update('email')}
+                    className="login-input"
+                  />
+                </label>
+                <br/>
+                <input className="login1-submit" type="submit" value="Next"/>
+                <br/>
+                {this.props.navLink}
+              </div>
+            </form>
+          </div>
         </div>
       );
     } else {
       return (
-        <LoginForm2 email={this.state.email} processForm={this.props.processForm}/>
+        <LoginForm2 email={this.state.email} processForm={this.props.processForm} errors={this.props.errors}/>
       )
     }
   }
