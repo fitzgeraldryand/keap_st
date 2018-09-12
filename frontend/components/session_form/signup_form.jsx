@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 
-class SessionForm extends React.Component {
+class SignUpForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -62,8 +62,9 @@ class SessionForm extends React.Component {
               />
             </label>
             <br/>
-            {this.props.navLink}
             <input className="session-submit" type="submit" value={this.props.formType} />
+            <br/>
+            {this.props.navLink}  
           </div>
         </form>
       </div>
@@ -71,4 +72,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(SignUpForm);
