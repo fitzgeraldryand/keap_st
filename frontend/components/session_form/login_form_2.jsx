@@ -6,6 +6,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
 import TextField from '@material-ui/core/TextField';
+import PasswordField from 'material-ui-password-field'
 
 class LoginForm2 extends React.Component {
   constructor(props) {
@@ -61,14 +62,14 @@ class LoginForm2 extends React.Component {
                 <br/>
                 <FormControl margin="normal" fullWidth>
                   <InputLabel htmlFor="password">Enter your password</InputLabel>
-                  <Input id="password" name="password" onChange={this.update('password')} autoComplete="password" autoFocus />
+                  <Input id="password" type='password' name="password" onChange={this.update('password')} autoComplete="password" autoFocus />
                 </FormControl>
                 <p className='errors'>{this.renderErrors()}</p>
               </div>
               <br/>
               <br/>
               <div className='bottom-buttons'>
-                <span className='loginLink'>Forgot passowrd?</span>
+                <span className='loginLink'>Forgot password?</span>
                 <input className="login1-submit" type="submit" value="Next"/>
               </div>
             </form>

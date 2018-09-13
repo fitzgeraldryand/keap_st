@@ -83,13 +83,13 @@ class SignUpForm extends React.Component {
                     <div>
                       <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="password">Password</InputLabel>
-                        <Input id="password" onChange={this.update('password')} name="password" autoComplete="password" autoFocus />
+                        <Input id="password" type="password" onChange={this.update('password')} name="password" autoComplete="password" autoFocus />
                       </FormControl>
                     </div>
                     <div>
                       <FormControl margin="normal" fullWidth>
                         <InputLabel htmlFor="confirmPassword">Confirm password</InputLabel>
-                        <Input id="confirmPassword" onChange={this.update('confirmPassword')} name="confirmPassword" autoComplete="password" autoFocus />
+                        <Input id="confirmPassword" type="password" onChange={this.update('confirmPassword')} name="confirmPassword" autoComplete="password" autoFocus />
                       </FormControl>
                     </div>
                   </div>

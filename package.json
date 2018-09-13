@@ -9,6 +9,7 @@
     "babel-loader": "^8.0.2",
     "contentful": "^7.0.3",
     "lodash": "^4.17.10",
+    "material-ui-password-field": "^2.0.1",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-redux": "^5.0.7",
