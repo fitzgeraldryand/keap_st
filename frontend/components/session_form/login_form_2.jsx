@@ -50,7 +50,8 @@ class LoginForm2 extends React.Component {
               <div className='login-copy'>
                 <p className='header'> Welcome </p>
                 <div className='userDisplay'>
-                  <i class="fas fa-user-circle"></i>
+                  <img className="accountIconUrl" src={window.accountIconUrl}></img>
+                  <br/>
                   <p>{this.props.email}</p>
                 </div>
               </div>

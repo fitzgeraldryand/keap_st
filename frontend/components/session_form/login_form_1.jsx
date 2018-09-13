@@ -91,7 +91,9 @@ class LoginForm1 extends React.Component {
               <br/>
               <br/>
               <div className='bottom-buttons'>
-                <Link to="/signup" onClick={this.clearErrors} className='loginLink'>Create account</Link>
+                <div className='loginLinkDiv'>
+                  <Link to="/signup" onClick={this.clearErrors} className='loginLink'>Create account</Link>
+                </div>
                 <input className="login1-submit" type="submit" value="Next"/>
               </div>
             </form>

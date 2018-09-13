@@ -58,6 +58,17 @@
   border-radius: 10px;
   padding: 5px;
   box-shadow: 0 0 2px gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 28px;
+  min-width: 100px;
+}
+
+.accountIconUrl {
+  width: 18px;
+  height: 18px;
 }
 
 .login-form {
@@ -113,10 +124,26 @@
   font-weight: bold;
 }
 
+.login1-submit:hover {
+  background-color: #1b7bf5;
+  box-shadow: 0 0 2px #1b7bf5;
+}
+
 .loginLink {
   font-weight: bold;
   color: #4982e9;
   font-size: 13px;
+}
+
+.loginLinkDiv {
+  height: 22.5px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.loginLinkDiv:hover {
+  background-color: #f1f5fd;
 }
 
 .bottomNav {

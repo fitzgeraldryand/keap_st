@@ -101,9 +101,9 @@ class SignUpForm extends React.Component {
                 <br/>
                 <br/>
                 <div className='bottom-buttons'>
-                  <span className='loginLink'>
-                    <Link to="/login" onClick={this.clearErrors}>Sign in instead</Link>
-                  </span>
+                  <div className='loginLinkDiv'>
+                    <Link to="/login" onClick={this.clearErrors} className='loginLink'>Sign in instead</Link>
+                  </div>
                   <input className="login1-submit" type="submit" value="Next"/>
                 </div>
               </form>
