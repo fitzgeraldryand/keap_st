@@ -45,7 +45,7 @@ class LoginForm2 extends React.Component {
       return (
         <div className="login-div">
           <div className="login-form-container">
-            <img className="logo" src='../../assets/google_logo.png'></img>
+            <img className="logo" src={window.logoUrl}></img>
             <form className="login-form-box" onSubmit={this.handleSubmit}>
               <div className='login-copy'>
                 <p className='header'> Welcome </p>

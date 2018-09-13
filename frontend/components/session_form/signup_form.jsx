@@ -64,7 +64,7 @@ class SignUpForm extends React.Component {
         <div className="login-div">
           <div className="signup-form-container">
             <div className='signupInput'>
-              <img className="logo" src='../../assets/google_logo.png'></img>
+              <img className="logo" src={window.logoUrl}></img>
               <form className='login-form-box' onSubmit={this.handleSubmit}>
                 <div className='signup-copy'>
                   <p className='header'> Create your Google Account </p>
@@ -109,7 +109,7 @@ class SignUpForm extends React.Component {
               </form>
             </div>
             <div className='signupImageContainer'>
-              <img className="signupImage" src='../../assets/account.svg'></img>
+              <img className="signupImage" src={window.userUrl}></img>
               <p> One account. All of Google working for you. </p>
             </div>
           </div>
