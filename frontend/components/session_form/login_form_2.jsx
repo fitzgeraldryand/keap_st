@@ -1,6 +1,11 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import merge from 'lodash/merge';
+import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 
 class LoginForm2 extends React.Component {
   constructor(props) {
@@ -36,32 +41,54 @@ class LoginForm2 extends React.Component {
   }
 
   render() {
-    return (
-      <div className="login-form-container">
-        <form onSubmit={this.handleSubmit} className="login-form-box">
-          <br/>
-          {this.props.formTypeHTML}
-          <br/>
-          <h3> Welcome </h3>
-          <br/>
-          {this.props.email}
-          {this.renderErrors()}
-          <div className="login-form">
-            <br/>
-            <label>Password:
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                className="login-input"
-              />
-            </label>
-            <br/>
-            {this.props.navLink}
-            <input className="session-submit" type="submit" value={this.props.formType} />
+    if (!this.state.clicked) {
+      return (
+        <div className="login-div">
+          <div className="login-form-container">
+            <img className="logo" src='../../assets/google_logo.png'></img>
+            <form className="login-form-box" onSubmit={this.handleSubmit}>
+              <div className='login-copy'>
+                <p className='header'> Welcome </p>
+                <div className='userDisplay'>
+                  <i class="fas fa-user-circle"></i>
+                  <p>{this.props.email}</p>
+                </div>
+              </div>
+              <br/>
+              <br/>
+              <div className="login-form">
+                <br/>
+                <FormControl margin="normal" fullWidth>
+                  <InputLabel htmlFor="password">Enter your password</InputLabel>
+                  <Input id="password" name="password" onChange={this.update('password')} autoComplete="password" autoFocus />
+                </FormControl>
+                <p className='errors'>{this.renderErrors()}</p>
+              </div>
+              <br/>
+              <br/>
+              <div className='bottom-buttons'>
+                <span className='loginLink'>Forgot passowrd?</span>
+                <input className="login1-submit" type="submit" value="Next"/>
+              </div>
+            </form>
           </div>
-        </form>
-      </div>
-    );
+          <div className='bottomNav'>
+            <div>
+              <p>English (United States)</p>
+            </div>
+            <div className='bottomNavOptions'>
+              <a href='https://support.google.com/accounts?hl=en#topic=3382296'>Help</a>
+              <a href='https://policies.google.com/privacy?gl=US&hl=en'>Privacy</a>
+              <a href='https://policies.google.com/terms?gl=US&hl=en'>Terms</a>
+            </div>
+          </div>
+        </div>
+      );
+    } else {
+      return (
+        <LoginForm2 email={this.state.email} processForm={this.props.processForm} errors={this.props.errors}/>
+      )
+    }
   }
 }
 

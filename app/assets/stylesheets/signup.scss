@@ -1,0 +1,88 @@
+.signup-form-container {
+  box-sizing: border-box;
+  height: 550px;
+  width: 750px;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-around;
+  box-shadow: 0 0 4px gray;
+  border-radius: 7px;
+  padding: 57px 20px 70px 20px;
+}
+
+.signupImageContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.signupImageContainer p {
+  font-family: 'Roboto',arial,sans-serif;
+  width: 200px;
+  display: block;
+  font-weight: 300;
+  text-align: center;
+  font-size: 16px;
+}
+
+.signupImage {
+  width: 230px;
+  height: 260px;
+}
+
+.signupInput {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 375px;
+  height: 475px;
+}
+
+.passwordDiv {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.signup-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 375px;
+  height: 475px;
+  height: 50px;
+  justify-content: space-between;
+  color: #212121;
+  font-weight: 400;
+  margin: 5px;
+}
+
+.infoCopy {
+  font-size: 12px;
+  color: #212121;
+}
+
+.signupBottomNav {
+  width: 750px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.signupBottomNavOptions {
+  display: flex;
+  width: 160px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #757575;
+  font-weight: 500;
+}

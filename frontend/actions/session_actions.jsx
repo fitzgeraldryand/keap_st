@@ -4,6 +4,11 @@ export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const LOGOUT_CURRENT_USER = 'LOGOUT_CURRENT_USER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const RECEIVE_NO_ERRORS = 'RECEIVE_NO_ERRORS';
+
+export const receiveNoErrors = () => ({
+  type: RECEIVE_NO_ERRORS
+});
 
 export const receiveCurrentUser = currentUser => ({
   type: RECEIVE_CURRENT_USER,

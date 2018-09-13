@@ -1,0 +1,141 @@
+.login-div {
+  height: 100%;
+  width: 100%;
+  font-family: 'Google Sans',arial, sans-serif;
+  letter-spacing: .20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+}
+
+.login-form-container {
+  box-sizing: border-box;
+  height: 500px;
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  box-shadow: 0 0 4px gray;
+  border-radius: 7px;
+  padding: 57px 20px 70px 20px;
+}
+
+.logo {
+  width: 74px;
+  height: 26px;
+}
+
+.login-form-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 425px;
+  width: 350px;
+}
+
+.login-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 50px;
+  justify-content: space-between;
+  color: #212121;
+  font-weight: 400;
+  margin: 20px;
+}
+
+.header {
+  font-size: 24px;
+  margin: 15px;
+}
+
+.userDisplay {
+  color: #3c4043;
+  border: 1px solid #9e9e9e;
+  font-size: 13px;
+  border-radius: 10px;
+  padding: 5px;
+  box-shadow: 0 0 2px gray;
+}
+
+.login-form {
+  width: inherit;
+  color: #9e9e9e;
+  font-size: 16px;
+}
+
+.errors {
+  color: #d62108;
+  font-size: 12px;
+}
+
+.guestMode {
+  width: inherit;
+  font-size: 13px;
+  color: #9e9e9e;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.guestModeSpan {
+  color: #4982e9;
+  font-weight: bold;
+}
+
+.bottom-buttons {
+  width: inherit;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  margin: 14px;
+}
+
+.bottom-buttons span {
+  color: #4982e9;
+  font-size: 13px;
+}
+
+.login1-submit {
+  height: 37px;
+  width: 89px;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 13px;
+  background-color: #1973e8;
+  border: 1px solid #3079ed;
+  border-radius: 3px;
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+
+.loginLink {
+  font-weight: bold;
+  color: #4982e9;
+  font-size: 13px;
+}
+
+.bottomNav {
+  width: 450px;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  font-size: 12px;
+}
+
+.bottomNavOptions {
+  display: flex;
+  width: 165px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: #757575;
+  font-weight: 500;
+}

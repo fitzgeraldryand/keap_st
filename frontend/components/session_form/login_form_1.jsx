@@ -1,5 +1,10 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import Typography from '@material-ui/core/Typography';
+import FormControl from '@material-ui/core/FormControl';
+import Input from '@material-ui/core/Input';
+import InputLabel from '@material-ui/core/InputLabel';
+import TextField from '@material-ui/core/TextField';
 import * as SessionAPIUtil from '../../util/session_api_util.js';
 import LoginForm2 from './login_form_2.jsx';
 import {
@@ -18,12 +23,17 @@ class LoginForm1 extends React.Component {
       clicked: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   update(field) {
     return e => this.setState({
       [field]: e.currentTarget.value
     });
+  }
+
+  clearErrors () {
+    this.props.receiveNoErrors();
   }
 
   componentDidMount () {
@@ -56,28 +66,45 @@ class LoginForm1 extends React.Component {
       return (
         <div className="login-div">
           <div className="login-form-container">
+            <img className="logo" src='../../assets/google_logo.png'></img>
             <form className="login-form-box" onSubmit={this.handleSubmit}>
-              <img className="logo" src='../../assets/google_logo.png'></img>
+              <div className='login-copy'>
+                <p className='header'> Sign in </p>
+                <p>with your Google Account</p>
+              </div>
               <br/>
-              <h1>Sign In</h1>
               <br/>
-              <p>with your Google account</p>
-              {this.renderErrors()}
               <div className="login-form">
                 <br/>
-                <label>Email:
-                  <input type="text"
-                    value={this.state.email}
-                    onChange={this.update('email')}
-                    className="login-input"
-                  />
-                </label>
-                <br/>
+                <FormControl margin="normal" fullWidth>
+                  <InputLabel htmlFor="email">Email or phone</InputLabel>
+                  <Input id="email" onChange={this.update('email')} name="email" autoComplete="email" autoFocus />
+                </FormControl>
+                <p className='errors'>{this.renderErrors()}</p>
+              </div>
+              <br/>
+              <br/>
+              <div className='guestMode'>
+                <span>Not your computer? Use Guest mode to sign in privately.</span>
+                <span className='guestModeSpan'>Guest mode</span>
+              </div>
+              <br/>
+              <br/>
+              <div className='bottom-buttons'>
+                <Link to="/signup" onClick={this.clearErrors} className='loginLink'>Create account</Link>
                 <input className="login1-submit" type="submit" value="Next"/>
-                <br/>
-                {this.props.navLink}
               </div>
             </form>
+          </div>
+          <div className='bottomNav'>
+            <div>
+              <p>English (United States)</p>
+            </div>
+            <div className='bottomNavOptions'>
+              <a href='https://support.google.com/accounts?hl=en#topic=3382296'>Help</a>
+              <a href='https://policies.google.com/privacy?gl=US&hl=en'>Privacy</a>
+              <a href='https://policies.google.com/terms?gl=US&hl=en'>Terms</a>
+            </div>
           </div>
         </div>
       );
