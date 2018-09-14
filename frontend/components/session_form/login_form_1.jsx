@@ -24,6 +24,7 @@ class LoginForm1 extends React.Component {
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearErrors = this.clearErrors.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   update(field) {
@@ -38,6 +39,11 @@ class LoginForm1 extends React.Component {
 
   componentDidMount () {
     this.props.getUsers();
+  }
+
+  handleClick() {
+    const guestUser = {email: 'guest@guest', password: 'guest@guest'};
+    this.props.processForm(guestUser);
   }
 
   handleSubmit(e) {
@@ -86,7 +92,7 @@ class LoginForm1 extends React.Component {
               <br/>
               <div className='guestMode'>
                 <span>Not your computer? Use Guest mode to sign in privately.</span>
-                <span className='guestModeSpan'>Guest mode</span>
+                <span onClick={this.handleClick} className='guestModeSpan'>Guest mode</span>
               </div>
               <br/>
               <br/>
@@ -97,16 +103,6 @@ class LoginForm1 extends React.Component {
                 <input className="login1-submit" type="submit" value="Next"/>
               </div>
             </form>
-          </div>
-          <div className='bottomNav'>
-            <div>
-              <p>English (United States)</p>
-            </div>
-            <div className='bottomNavOptions'>
-              <a href='https://support.google.com/accounts?hl=en#topic=3382296'>Help</a>
-              <a href='https://policies.google.com/privacy?gl=US&hl=en'>Privacy</a>
-              <a href='https://policies.google.com/terms?gl=US&hl=en'>Terms</a>
-            </div>
           </div>
         </div>
       );

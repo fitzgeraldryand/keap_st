@@ -74,16 +74,6 @@ class LoginForm2 extends React.Component {
               </div>
             </form>
           </div>
-          <div className='bottomNav'>
-            <div>
-              <p>English (United States)</p>
-            </div>
-            <div className='bottomNavOptions'>
-              <a href='https://support.google.com/accounts?hl=en#topic=3382296'>Help</a>
-              <a href='https://policies.google.com/privacy?gl=US&hl=en'>Privacy</a>
-              <a href='https://policies.google.com/terms?gl=US&hl=en'>Terms</a>
-            </div>
-          </div>
         </div>
       );
     } else {

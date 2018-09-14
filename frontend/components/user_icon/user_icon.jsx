@@ -15,10 +15,19 @@ class UserIcon extends React.Component {
     this.setState({clicked: !this.state.clicked});
   }
 
+  isClassUserInfo(element) {
+    return element.className === 'userInfoContainer';
+  }
+
   handleClick(e) {
     if (e.path[0].className === 'logoutButton') {
       this.props.logout();
     }
+
+    if (e.path.some(this.isClassUserInfo) || e.path[0].className === 'userLogout') {
+      return '';
+    }
+
     if (this.state.clicked || e.path[0].className === 'dot') {
       this.toggleClicked();
     }

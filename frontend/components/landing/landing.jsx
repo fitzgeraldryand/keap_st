@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LoginFormContainer from '../session_form/login_form_container.jsx';
 import UserIcon from '../user_icon/user_icon.jsx';
+import NoteIndex from '../notes/note_index.jsx';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -84,59 +85,7 @@ class Landing extends React.Component {
           </section>
         </div>
         <section className="content-main">
-          <ul>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-            <li>First</li>
-            <li>Second</li>
-            <li>Third</li>
-          </ul>
+
         </section>
       </div>
     );
