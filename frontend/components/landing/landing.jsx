@@ -2,19 +2,20 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import DashboardContainer from '../dashboard/dashboard_container.jsx';
 import LoginFormContainer from '../session_form/login_form_container.jsx';
+import UserIcon from '../user_icon/user_icon.jsx';
 
 class Landing extends React.Component {
   constructor(props) {
     super(props);
   }
 
-  randomUserColor() {
-    const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
-    return startArr[Math.floor(Math.random() * startArr.length)];
-  }
+  // randomUserColor() {
+  //   const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
+  //   return startArr[Math.floor(Math.random() * startArr.length)];
+  // }
 
   render() {
-    const colorStyle = {backgroundColor: this.randomUserColor()};
+    // const colorStyle = {backgroundColor: this.randomUserColor()};
     return (
       <div className='wrapper'>
         <div className="header-nav">
@@ -31,9 +32,7 @@ class Landing extends React.Component {
             <li></li>
             <li></li>
             <li>
-              <span className='dot' style={colorStyle}>
-                {this.props.currentEmail.slice(0,1).toUpperCase()}
-              </span>
+              <UserIcon currentEmail={this.props.currentEmail} logout={this.props.logout}/>
             </li>
           </ul>
         </div>
