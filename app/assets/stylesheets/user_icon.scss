@@ -3,12 +3,13 @@
   width: 44px;
   border-radius: 50%;
   text-align: center;
-  line-height: 35px;
+  line-height: 33px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   display: inline-block;
   font-weight: 10;
   border: 5px solid #fdbd0f;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .dot-active {
@@ -16,12 +17,13 @@
   width: 44px;
   border-radius: 50%;
   text-align: center;
-  line-height: 35px;
+  line-height: 33px;
   color: white;
-  font-size: 16px;
+  font-size: 18px;
   display: inline-block;
   font-weight: 10;
   border: 5px solid #a08c5bab;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .dotLarge {
@@ -31,9 +33,10 @@
   text-align: center;
   line-height: 96px;
   color: white;
-  font-size: 48px;
+  font-size: 52px;
   display: inline-block;
-  font-weight: 10;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .dot:hover {
@@ -58,7 +61,7 @@
   width: 315px;
   height: 190px;
   font-size: 13px;
-  font-family: 'Google Sans', arial, sans-serif;
+  font-family: 'Source Sans', sans-serif;
 }
 
 .userInfoWrapper {

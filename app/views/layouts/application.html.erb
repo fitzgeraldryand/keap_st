@@ -4,9 +4,12 @@
     <title>KeapSt</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
   </head>
 
   <body>
@@ -16,6 +19,11 @@
       window.userUrl = "<%= image_url('account.svg') %>"
       window.accountIconUrl = "<%= image_url('account-icon.png') %>"
       window.blackLogoUrl = "<%= image_url('google_black.png') %>"
+      window.lightbulbUrl = "<%= image_url('lightbulb.png') %>"
+      window.addUserButtonUrl = "<%= image_url('add-user-button.png') %>"
+      window.frameLandscapeUrl = "<%= image_url('frame-landscape.png') %>"
+      window.menuUrl = "<%= image_url('menu.png') %>"
+      window.painterPaletteUrl = "<%= image_url('painter-palette.png') %>"
     </script>
     <%= yield %>
   </body>

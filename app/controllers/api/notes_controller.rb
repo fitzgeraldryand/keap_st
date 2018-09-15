@@ -1,6 +1,6 @@
 class Api::NotesController < ApplicationController
   def index
-    @notes = Note.all
+    @notes = Note.order(tab_index: :desc)
     render :index
   end
 
@@ -34,6 +34,6 @@ class Api::NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title,:body, :author_id, :color)
+    params.require(:note).permit(:title,:body, :author_id, :color, :tab_index, :pinned)
   end
 end

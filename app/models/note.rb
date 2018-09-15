@@ -9,10 +9,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  color      :string
+#  tab_index  :integer
+#  pinned     :boolean
 #
 
 class Note < ApplicationRecord
-  validates :title, :author_id, :body, :color, presence: :true
+  validates :title, :author_id, :body, :color, :tab_index, presence: :true
+  validates :tab_index, uniqueness: {scope: :author_id}
 
   COLORS = [
     '#cfd8dc',

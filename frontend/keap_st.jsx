@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 import * as SessionAPIUtil from './util/session_api_util.js';
-import {login, logout} from './actions/session_actions';
+import {login, logout, getUsers} from './actions/session_actions';
 import * as NoteUtilActions from './actions/note_actions';
 
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.dispatch = store.dispatch;
   window.login = login;
   window.logout = logout;
-  window.getUsers = SessionAPIUtil.getUsers;
+  window.getUsers = getUsers;
   window.fetchNotes = NoteUtilActions.fetchNotes;
   window.createNote = NoteUtilActions.createNote;
   window.fetchNote = NoteUtilActions.fetchNote;
