@@ -7,6 +7,10 @@ import NoteIndex from '../notes/note_index.jsx';
 class Landing extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      scrolled: false
+    };
+    this.handleScroll = this.handleScroll.bind(this);
   }
 
   // randomUserColor() {
@@ -14,11 +18,31 @@ class Landing extends React.Component {
   //   return startArr[Math.floor(Math.random() * startArr.length)];
   // }
 
+componentDidMount() {
+  const main = document.getElementById('content-main');
+  main.addEventListener('scroll', this.handleScroll);
+}
+
+componentWillUnmount() {
+  const main = document.getElementById('content-main');
+  main.removeEventListener('scroll', this.handleScroll);
+}
+
+handleScroll(e) {
+  if (e.path[0].scrollTop >= 1 && (!this.state.scrolled)) {
+    this.setState({scrolled: true});
+  }
+
+  if (e.path[0].scrollTop === 0) {
+    this.setState({scrolled: false});
+  }
+}
+
   render() {
     // const colorStyle = {backgroundColor: this.randomUserColor()};
     return (
       <div className='wrapper'>
-        <div className="header-nav">
+        <div className={this.state.scrolled ? "header-nav-with-shadow" : "header-nav"}>
           <div className="header-logo">
             <Link to="/" id='homeLink'>
               <img className="logo" src={window.blackLogoUrl}></img>
@@ -37,7 +61,7 @@ class Landing extends React.Component {
           </ul>
         </div>
         <div className='sidebarContainer'>
-          <section className="content-sidebar">
+          <section className="content-sidebar" id='sidebarContainer'>
             <ul>
               <li>First</li>
               <li>Second</li>
@@ -84,8 +108,66 @@ class Landing extends React.Component {
             </ul>
           </section>
         </div>
-        <section className="content-main">
-
+        <section className="content-main" id='content-main'>
+          <ul>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+            <li>First</li>
+            <li>Second</li>
+            <li>Third</li>
+          </ul>
         </section>
       </div>
     );
