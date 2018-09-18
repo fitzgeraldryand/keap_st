@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class UserIcon extends React.Component {
   constructor(props) {
@@ -8,7 +8,9 @@ class UserIcon extends React.Component {
       color: ""
     };
     this.toggleClicked = this.toggleClicked.bind(this);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleLogout = this.handleLogout.bind(this);
+    this.handleClickIcon = this.handleClickIcon.bind(this);
+    this.handleOuterClick = this.handleOuterClick.bind(this);
   }
 
   toggleClicked() {
@@ -19,17 +21,27 @@ class UserIcon extends React.Component {
     return element.className === 'userInfoContainer';
   }
 
-  handleClick(e) {
-    if (e.path[0].className === 'logoutButton') {
-      this.props.logout();
-    }
+  handleLogout(e) {
+    e.stopPropagation();
+    this.props.logout();
+  }
 
-    if (e.path.some(this.isClassUserInfo) || e.path[0].className === 'userLogout') {
-      return '';
-    }
+  handleClickIcon(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.toggleClicked();
+    document.addEventListener('mousedown', this.handleOuterClick);
+  }
 
-    if (this.state.clicked || e.path[0].className === 'dot') {
+  handleOuterClick(e) {
+    if (this.state.clicked && (e.path[0].className === 'logoutButton')) {
+      this.handleLogout(e);
+    }
+    if (this.state.clicked && (e.path[0].className !== 'logoutButton') && e.path.some(this.isClassUserInfo)) {
+      e.stopPropagation();
+    } else {
       this.toggleClicked();
+      document.removeEventListener('mousedown', this.handleOuterClick);
     }
   }
 
@@ -39,12 +51,7 @@ class UserIcon extends React.Component {
   }
 
   componentWillMount() {
-    document.addEventListener('mousedown', this.handleClick, false);
     this.setState({color: this.randomUserColor()});
-  }
-
-  componentWillUnmount() {
-    document.removeEventListener('mousedown', this.handleClick, false);
   }
 
   render() {
@@ -62,8 +69,8 @@ class UserIcon extends React.Component {
               {this.props.currentEmail}
             </div>
           </div>
-          <div className='userLogout'>
-            <button className='logoutButton'>Sign out</button>
+          <div className='userLogout' onClick={(e) => this.handleLogout(e)}>
+            <button className='logoutButton' onClick={(e) => this.handleLogout(e)}>Sign out</button>
           </div>
         </div>
       </div>
@@ -71,7 +78,7 @@ class UserIcon extends React.Component {
     const dot = (
       <span
         style={colorStyle}
-        onClick={(e) => this.handleClick(e)}>
+        onClick={(e) => this.handleClickIcon(e)}>
         {this.props.currentEmail.slice(0,1).toUpperCase()}
       </span>
     );
@@ -80,7 +87,7 @@ class UserIcon extends React.Component {
         <span
           className = {this.state.clicked ? 'dot-active' : 'dot'}
           style={colorStyle}
-          onClick={(e) => this.handleClick(e)}>
+          onClick={(e) => this.handleClickIcon(e)}>
           {this.props.currentEmail.slice(0,1).toUpperCase()}
         </span>
         {this.state.clicked ? userIconDropdown : ""}

@@ -4,6 +4,7 @@ import LoginFormContainer from '../session_form/login_form_container.jsx';
 import UserIcon from '../user_icon/user_icon.jsx';
 import NoteIndex from '../notes/note_index.jsx';
 import NoteIndexContainer from '../notes/note_index_container.jsx';
+import NoteFormContainer from '../notes/note_form_container.jsx'
 
 class Landing extends React.Component {
   constructor(props) {
@@ -110,6 +111,7 @@ handleScroll(e) {
           </section>
         </div>
         <section className="content-main" id='content-main'>
+          <NoteFormContainer/>
           <NoteIndexContainer/>
         </section>
       </div>

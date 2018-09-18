@@ -48,6 +48,7 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
+  margin: 13px;
 }
 
 .notesIndex {
@@ -60,17 +61,20 @@
   align-items: flex-start;
   justify-content: flex-start;
   box-sizing: border-box;
+  margin: 13px;
 }
 
 .note-index-item-wrapper{
   width: 240px;
-  margin: 16px;
+  margin-right: 16px;
+  margin-bottom: 16px;
   cursor: auto;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .note-index-item{
@@ -81,13 +85,14 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  box-shadow: 0px 0px 1px #7f7f7f;
+  box-shadow: 0px 0px 5px #7f7f7f;
   border-radius: 2px;
+  position: relative;
 }
 
-.note-index-item-hovered{
+.note-index-item-wrapper:hover .note-index-item{
   width: 240px;
-  margin: 16px;
+  // margin: 16px;
   cursor: auto;
   box-sizing: border-box;
   display: flex;
@@ -96,10 +101,12 @@
   justify-content: flex-start;
   box-shadow: 0px 0px 10px #7f7f7f;
   border-radius: 2px;
+  position: relative;
 }
 
 .note-index-item-title{
   background-color: inherit;
+  box-sizing: border-box;
   width: 240px;
   display: flex;
   flex-direction: row;
@@ -108,15 +115,20 @@
   align-items: center;
   padding: 10px 15px 0 15px;
   min-height: 38px;
-  font-weight: bold;
   font-size: 17px;
   font-family: 'Roboto Condensed',sans-serif;
   line-height: 23px;
+  font-weight: bold;
 }
 
-.note-index-item-title-hovered{
+.note-index-item-title{
+  height: 0;
+}
+
+.note-index-item-wrapper:hover .note-index-item-title{
   background-color: inherit;
   width: 240px;
+  box-sizing: border-box;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -135,21 +147,21 @@
   width: 240px;
   min-height: 30px;
   padding: 12px 15px 15px 15px;
-  font-size: 15px;
   font-family: 'Roboto Slab',serif;
   box-sizing: border-box;
   word-wrap: break-word;
+  font-weight: 10;
 }
 
-.note-index-item-content-hovered{
+.note-index-item-wrapper:hover .note-index-item-content{
   background-color: inherit;
   width: 240px;
   min-height: 30px;
   padding: 12px 15px 15px 15px;
-  font-size: 15px;
   font-family: 'Roboto Slab',serif;
   box-sizing: border-box;
   word-wrap: break-word;
+  font-weight: 10;
 }
 
 .note-index-item-footer-container{
@@ -176,7 +188,7 @@
   padding: 5px 15px 15px 15px;
 }
 
-.note-index-item-footer-hovered {
+.note-index-item-wrapper:hover .note-index-item-footer {
   background-color: inherit;
   box-sizing: border-box;
   display: flex;
@@ -194,4 +206,104 @@
   height: 18px;
   opacity: 2;
   cursor: pointer;
+}
+
+.noteIcon:hover {
+  color: #0000008a;
+}
+
+#colorPaletteIcon {
+  background-image: image_url('painter-palette.png');
+  position: relative;
+  width: 18px;
+  height: 18px;
+  background-size: 100%;
+}
+
+.colorPaletteDropdownWrapper {
+  width: 150px;
+  height: 130px;
+  display: none;
+}
+
+#colorPaletteIcon:hover .colorPaletteDropdownWrapper{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 20px;
+  left: -5px;
+}
+
+.colorPaletteDropdownWrapper:hover .colorPaletteDropdown{
+  width: 138px;
+  height: 113px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  left: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  background: #fff;
+  position: absolute;
+  box-shadow: 0 1px 3px #9c9c9c;
+  padding: 10px;
+}
+
+.colorPaletteDropdown{
+  display: none;
+}
+
+#colorPaletteIcon:hover .colorPaletteDropdown{
+  width: 138px;
+  height: 113px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  left: 0px;
+  bottom: 0px;
+  overflow: hidden;
+  background: #fff;
+  position: absolute;
+  box-shadow: 0 1px 3px #9c9c9c;
+  padding: 10px;
+}
+
+.colorDot {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#colorDotWhite {
+  border: 1.5px solid #e8e8e8;
+}
+
+.colorDot:hover {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  border: 1.5px solid #9c9c9c;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#colorDotWhite:hover {
+  border: 1.5px solid #9c9c9c;
+}
+
+.tick {
+  width: 18px;
+  height: 18px;
 }

@@ -14,7 +14,7 @@
 #
 
 class Note < ApplicationRecord
-  validates :title, :author_id, :body, :color, :tab_index, presence: :true
+  validates :author_id, :color, :tab_index, presence: :true
   validates :tab_index, uniqueness: {scope: :author_id}
 
   COLORS = [
