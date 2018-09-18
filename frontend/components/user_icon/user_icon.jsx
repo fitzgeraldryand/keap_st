@@ -7,6 +7,7 @@ class UserIcon extends React.Component {
       clicked: false,
       color: ""
     };
+    this.randomUserColor = this.randomUserColor.bind(this);
     this.toggleClicked = this.toggleClicked.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
     this.handleClickIcon = this.handleClickIcon.bind(this);

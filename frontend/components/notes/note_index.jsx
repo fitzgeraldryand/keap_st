@@ -30,7 +30,13 @@ class NoteIndex extends React.Component {
         <div className='notesIndexWrapper'>
           <ul className='notesIndex'>
             {this.props.notes.map(note =>
-              <NoteIndexItem key={note.id} note={note} deleteNote={this.props.deleteNote} updateNote={this.props.updateNote}/>)}
+              <NoteIndexItem
+                key={note.id}
+                note={note}
+                deleteNote={this.props.deleteNote}
+                updateNote={this.props.updateNote}
+                addHiddenNote={this.props.addHiddenNote}
+                hiddenNote={this.props.hiddenNote}/>)}
           </ul>
         </div>
       );

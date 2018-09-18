@@ -36,4 +36,13 @@ class Note < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id,
     class_name: 'User'
+
+  has_many :labellings,
+    primary_key: :id,
+    foreign_key: :label_id,
+    class_name: 'Labelling'
+
+  has_many :labels,
+    through: :labellings,
+    source: :label
 end

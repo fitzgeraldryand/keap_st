@@ -1,6 +1,6 @@
 class Api::NotesController < ApplicationController
   def index
-    @notes = Note.order(tab_index: :desc)
+    @notes = current_user.notes.order(tab_index: :desc)
     render :index
   end
 

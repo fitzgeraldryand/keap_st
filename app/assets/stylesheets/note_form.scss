@@ -58,6 +58,13 @@
   font-family: 'Roboto Condensed',sans-serif;
   color: black;
   width: 100%;
+  font-weight: bold;
+}
+
+#titleForm, #bodyForm {
+  width: 100%;
+  overflow-wrap: normal;
+  height: auto;
 }
 
 .bodyDiv {

@@ -1,0 +1,27 @@
+.modal-screen {
+  position: fixed;
+  background: rgba(230, 230, 230, 0.75);
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.updateForm {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -220px;
+  width: 602px;
+  z-index: 3;
+  border-radius: 1px;
+  color: #737373;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  box-shadow: 0px 0px 5px 1px #7f7f7f;
+  min-height: 136px;
+  padding: 5px 20px 0 20px;
+}

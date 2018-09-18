@@ -6,6 +6,7 @@ class NoteIndexItem extends React.Component {
     super(props);
     this.handleDotClick = this.handleDotClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   handleDelete() {
@@ -19,7 +20,14 @@ class NoteIndexItem extends React.Component {
     });
   }
 
+  handleClick() {
+    const noteId = this.props.note.id;
+    this.props.addHiddenNote(noteId);
+  }
+
   render() {
+    const visibilityStyle = (this.props.note.id === this.props.hiddenNote ? {visibility:'hidden'} : {visibility:'visible'});
+
     const colorStyle = {backgroundColor: this.props.note.color};
 
     const checkmark = (
@@ -94,14 +102,20 @@ class NoteIndexItem extends React.Component {
       </div>
     );
     return (
-      <li className="note-index-item-wrapper" id={`index-item-${this.props.note.tab_index}`}>
+      <li
+        className="note-index-item-wrapper"
+        id={`index-item-${this.props.note.tab_index}`}
+        style={visibilityStyle}
+        onClick={() => this.handleClick()}>
         <div style={colorStyle} className='note-index-item'>
-          <div style={colorStyle} className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
-            <p>{this.props.note.title}</p>
-          </div>
-          <div style={colorStyle} className={'note-index-item-content'}>
-            {body}
-          </div>
+          <Link to={`/notes/${this.props.note.id}`}>
+            <div style={colorStyle} className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
+              <p>{this.props.note.title}</p>
+            </div>
+            <div style={colorStyle} className={'note-index-item-content'}>
+              {body}
+            </div>
+          </Link>
           <div style={colorStyle} className='note-index-item-footer-container'>
             <div style={colorStyle} className='note-index-item-footer'>
               <input type='image' className="noteIcon" src={window.addUserButtonUrl}></input>
