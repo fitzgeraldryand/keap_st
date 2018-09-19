@@ -1,6 +1,6 @@
 class Api::LabelsController < ApplicationController
   def index
-    @labels = Label.all
+    @labels = current_user.labels
     render :index
   end
 
@@ -19,9 +19,18 @@ class Api::LabelsController < ApplicationController
     render :show
   end
 
+  def update
+    @label = Label.find(params[:id])
+    if @label.update(label_params)
+      render :show
+    else
+      render json: @label.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def label_params
-    params.require(:label).permit(:name)
+    params.require(:label).permit(:name, :creator_id)
   end
 end

@@ -4,7 +4,8 @@ import LoginFormContainer from '../session_form/login_form_container.jsx';
 import UserIcon from '../user_icon/user_icon.jsx';
 import NoteIndex from '../notes/note_index.jsx';
 import NoteIndexContainer from '../notes/note_index_container.jsx';
-import NoteFormContainer from '../notes/note_form_container.jsx'
+import NoteFormContainer from '../notes/note_form_container.jsx';
+import LabelIndexContainer from '../labels/labels_index_container.jsx';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -23,6 +24,8 @@ class Landing extends React.Component {
 componentDidMount() {
   const main = document.getElementById('content-main');
   main.addEventListener('scroll', this.handleScroll);
+  this.props.fetchNotes();
+  this.props.getLabels();
 }
 
 componentWillUnmount() {
@@ -63,52 +66,7 @@ handleScroll(e) {
           </ul>
         </div>
         <div className='sidebarContainer'>
-          <section className="content-sidebar" id='sidebarContainer'>
-            <ul>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-              <li>First</li>
-              <li>Second</li>
-              <li>Third</li>
-            </ul>
-          </section>
+          <LabelIndexContainer/>
         </div>
         <section className="content-main" id='content-main'>
           <NoteFormContainer/>

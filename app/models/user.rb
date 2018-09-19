@@ -20,6 +20,11 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'Note'
 
+  has_many :labels,
+    primary_key: :id,
+    foreign_key: :creator_id,
+    class_name: 'Label'
+
   after_initialize :ensure_session_token
   attr_reader :password
 

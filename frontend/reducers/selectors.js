@@ -5,3 +5,8 @@ export const selectSortedAllNotes = state => {
   const allSortedNotes = _.sortBy(allNotes, [function(note) { return note.tab_index; }]);
   return allSortedNotes.reverse();
 };
+
+export const selectSortedAllLabels = state => {
+  const allLabels = _.values(state.entities.labels);
+  const allSortedLabels = _.sortBy(allLabels, [function(label) { return label.name; }]);
+};

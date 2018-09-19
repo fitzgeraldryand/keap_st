@@ -14,6 +14,7 @@ class NoteForm extends React.Component {
     this.handleDotClick = this.handleDotClick.bind(this);
     this.submit = this.submit.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   toggleClicked() {
@@ -72,12 +73,21 @@ class NoteForm extends React.Component {
     this.submit();
   }
 
+  handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('mousedown', this.handleOuterClick);
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.toggleClicked();
+    }
+  }
+
   handleOuterClick(e) {
     if (this.state.clicked && e.path.some(this.isClassClickedForm)) {
       e.stopPropagation();
     } else {
-      this.toggleClicked();
       document.removeEventListener('mousedown', this.handleOuterClick);
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.toggleClicked();
       this.submit();
     }
   }
@@ -101,7 +111,8 @@ class NoteForm extends React.Component {
       <div className="noteDefaultForm" onClick={(e) => {
           e.stopPropagation();
           this.toggleClicked();
-          document.addEventListener('mousedown', this.handleOuterClick)
+          document.addEventListener('mousedown', this.handleOuterClick);
+          document.addEventListener('keydown', this.handleKeyDown)
         }}>
         <p>Take a note... </p>
         <div className='noteFormIcons'>
@@ -168,6 +179,7 @@ class NoteForm extends React.Component {
 
     const clickedForm = (
       <form className="noteClickedForm"
+        id='newForm'
         style={colorStyle}
         onSubmit={(e) => this.handleSubmit(e)}>
         <div className='titleDiv'>
@@ -180,9 +192,9 @@ class NoteForm extends React.Component {
             />
         </div>
         <div className='bodyDiv'>
-          <input
-            type="text"
+          <textarea
             id="bodyForm"
+            form='newForm'
             value={this.state.body || ''}
             placeholder="Take a note..."
             onChange={this.update('body')}

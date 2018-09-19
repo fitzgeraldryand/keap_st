@@ -9,7 +9,7 @@ class Api::LabellingsController < ApplicationController
   end
 
   def destroy
-    @labelling = Labelling.find_by(params[:note_id, :label_id])
+    @labelling = Labelling.find_by(note_id: params[:note_id], label_id: params[:label_id])
     @labelling.destroy
     render :show
   end

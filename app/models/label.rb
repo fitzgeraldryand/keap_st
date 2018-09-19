@@ -1,5 +1,16 @@
+# == Schema Information
+#
+# Table name: labels
+#
+#  id         :bigint(8)        not null, primary key
+#  name       :string           not null
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#  creator_id :string
+#
+
 class Label < ApplicationRecord
-  validates :name, presence: true
+  validates :name, :creator_id, presence: true
 
   has_many :labellings,
     primary_key: :id,
@@ -9,4 +20,9 @@ class Label < ApplicationRecord
   has_many :notes,
     through: :labellings,
     source: :note
+
+  belongs_to :user,
+    primary_key: :id,
+    foreign_key: :creator_id,
+    class_name: 'User'
 end

@@ -1,0 +1,85 @@
+.labelHeader {
+  width: 280px;
+  padding-left: 32px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Roboto',sans-serif;
+  font-size: 13px;
+  color: #6b6b6b;
+  padding: 15px 28px 10px;
+}
+
+.labelEdit {
+  color: #6b6b6b;
+  width: 55px;
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 3px;
+}
+
+.labelEdit:hover {
+  background-color: #0000001f;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+.labelContent {
+  width: 280px;
+  padding-left: 32px;
+  font-family: 'Roboto',sans-serif;
+  font-size: 13px;
+  color: #6b6b6b;
+  padding: 15px 24px 10px;
+}
+
+.labelLi {
+  width: 280px;
+  padding-left: 32px;
+  padding: 15px 24px 10px;
+}
+
+.labelLi:hover {
+  background-color: #0000001f;
+  cursor: pointer;
+  border-radius: 1px;
+}
+
+
+.labelFooter {
+  width: 280px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 32px;
+  font-family: 'Roboto',sans-serif;
+  font-size: 13px;
+  color: #6b6b6b;
+  padding: 15px 24px 15px 24px;
+  margin-bottom: 3px;
+}
+
+.labelFooter:hover {
+  background-color: #0000001f;
+  cursor: pointer;
+}
+
+
+.labelFooterCopy {
+  width: 170px;
+  text-align: left;
+}
+
+.sidebarIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.label-section {
+  border-bottom: 1px solid #dddddd;
+}

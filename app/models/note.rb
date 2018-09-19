@@ -39,7 +39,7 @@ class Note < ApplicationRecord
 
   has_many :labellings,
     primary_key: :id,
-    foreign_key: :label_id,
+    foreign_key: :note_id,
     class_name: 'Labelling'
 
   has_many :labels,

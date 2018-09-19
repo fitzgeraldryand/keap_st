@@ -1,7 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { fetchNotes } from '../../actions/note_actions';
 import Landing from './landing';
+import * as LabelActions from '../../actions/label_actions';
 
 const currentEmail = (state) => {
   const userObj = state.entities.users[state.session.id];
@@ -17,7 +19,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    logout: () => { return dispatch(logout()); }
+    logout: () => { return dispatch(logout()); },
+    fetchNotes: () => { return dispatch(fetchNotes()); },
+    getLabels: () => { return dispatch(LabelActions.getLabels()); }
   };
 };
 

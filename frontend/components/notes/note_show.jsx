@@ -16,6 +16,7 @@ class NoteShow extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -34,6 +35,10 @@ class NoteShow extends React.Component {
     this.props.history.push('/');
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
   // handleOuterClick(e) {
   //   debugger
   //   if (e.path.some(this.isClassUpdateForm)) {
@@ -44,6 +49,14 @@ class NoteShow extends React.Component {
   //
   //   }
   // }
+
+  handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.props.deleteHiddenNote();
+      this.props.history.push('/');
+    }
+  }
 
   submit() {
     if ((Boolean(this.state.title) || Boolean(this.state.body))) {
@@ -184,6 +197,7 @@ class NoteShow extends React.Component {
       <div>
         <div className='modal-screen' onClick={(e) => this.handleSubmit(e)}></div>
         <form className="updateForm"
+          id='showForm'
           style={colorStyle}
           onSubmit={(e) => this.handleSubmit(e)}>
           <div className='titleDiv'>
@@ -196,12 +210,12 @@ class NoteShow extends React.Component {
               />
           </div>
           <div className='bodyDiv'>
-            <input
-              type="text"
+            <textarea
               id="bodyForm"
               value={this.state.body || ''}
               placeholder="Note"
               onChange={this.update('body')}
+              form='showForm'
               />
           </div>
           <div className='formBottom'>
