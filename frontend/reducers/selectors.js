@@ -8,5 +8,5 @@ export const selectSortedAllNotes = state => {
 
 export const selectSortedAllLabels = state => {
   const allLabels = _.values(state.entities.labels);
-  const allSortedLabels = _.sortBy(allLabels, [function(label) { return label.name; }]);
+  return _.sortBy(allLabels, [function(label) { return label.name; }]);
 };

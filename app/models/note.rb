@@ -45,4 +45,6 @@ class Note < ApplicationRecord
   has_many :labels,
     through: :labellings,
     source: :label
+
+  has_many_attached :photos
 end

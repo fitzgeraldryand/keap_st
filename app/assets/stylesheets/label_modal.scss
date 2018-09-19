@@ -1,0 +1,112 @@
+.labelContainer {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -100px;
+  width: 300px;
+  z-index: 3;
+  border-radius: 1px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 5px 1px #7f7f7f;
+  min-height: 136px;
+  padding: 5px 20px 0 20px;
+  background-color: #fafafa;
+  padding: 20px 20px 5px;
+  box-sizing: border-box;
+}
+
+.labelContainerCopy {
+  font-family: 'Roboto', sans-serif;
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+  width: 100%;
+}
+
+.inputDiv {
+  width: 100%;
+  padding: 20px;
+}
+
+.labelCreaterDiv {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  color: #757575;
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+}
+
+.labelForm{
+  width: 80%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+}
+
+.labelIcon2 {
+  height: 14px;
+  width: 14px;
+}
+
+.labelIcon2:hover {
+  cursor: pointer;
+}
+
+.labelModalUpdatableUL {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.labelModalUpdatable {
+  width: 100%;
+  height: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  color: black;
+  font-weight: bold;
+}
+
+.labelUpdaterFooter {
+  width: 100%;
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.labelUpdaterFooterButton {
+  font-family: 'Roboto',sans-serif;
+  font-size: 14px;
+  width: 63px;
+  height: 27px;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.labelUpdaterFooterButton:hover {
+  background-color: #00000014;
+}

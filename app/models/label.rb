@@ -11,6 +11,7 @@
 
 class Label < ApplicationRecord
   validates :name, :creator_id, presence: true
+  validates :name, uniqueness: {scope: :creator_id}
 
   has_many :labellings,
     primary_key: :id,

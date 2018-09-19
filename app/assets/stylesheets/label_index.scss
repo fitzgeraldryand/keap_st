@@ -1,6 +1,5 @@
 .labelHeader {
   width: 280px;
-  padding-left: 32px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -8,7 +7,7 @@
   font-family: 'Roboto',sans-serif;
   font-size: 13px;
   color: #6b6b6b;
-  padding: 15px 28px 10px;
+  padding: 15px 28px 0px;
 }
 
 .labelEdit {
@@ -30,17 +29,24 @@
 
 .labelContent {
   width: 280px;
-  padding-left: 32px;
   font-family: 'Roboto',sans-serif;
   font-size: 13px;
   color: #6b6b6b;
-  padding: 15px 24px 10px;
+  padding: 10px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .labelLi {
-  width: 280px;
-  padding-left: 32px;
-  padding: 15px 24px 10px;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  padding: 15px 24px 15px 24px;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .labelLi:hover {
@@ -56,7 +62,6 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  padding-left: 32px;
   font-family: 'Roboto',sans-serif;
   font-size: 13px;
   color: #6b6b6b;
@@ -75,11 +80,29 @@
   text-align: left;
 }
 
-.sidebarIcon {
-  width: 18px;
-  height: 18px;
+.labelIcon {
+  width: 22px;
+  height: 22px;
 }
 
 .label-section {
   border-bottom: 1px solid #dddddd;
+}
+
+.labelContainer {
+  position: absolute;
+  top: 200px;
+  left: 50%;
+  margin-left: -220px;
+  width: 602px;
+  z-index: 3;
+  border-radius: 1px;
+  color: #737373;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-start;
+  box-shadow: 0px 0px 5px 1px #7f7f7f;
+  min-height: 136px;
+  padding: 5px 20px 0 20px;
 }

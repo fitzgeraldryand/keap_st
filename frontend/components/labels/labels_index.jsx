@@ -1,13 +1,19 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Link, NavLink, Route } from 'react-router-dom';
+import LabelModal from './label_modal.jsx';
 
 class LabelIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.handleLink = this.handleLink.bind(this);
   }
 
   componentDidMount() {
     this.props.getLabels();
+  }
+
+  handleLink(e) {
+    this.props.history.push('/labels');
   }
 
   render() {
@@ -15,25 +21,29 @@ class LabelIndex extends React.Component {
       <div className='labelHeader'>
         <p>Labels</p>
         <div className='labelEdit'>
-          <p>EDIT</p>
+          <Link to='/labels'>EDIT</Link>
         </div>
       </div>
     );
 
     const labelFooter = (
-      <div className='labelFooter'>
-        <img className="sidebarIcon" src={window.addUrl}></img>
+      <Link to='/labels' className='labelFooter'>
+        <img className="labelIcon" src={window.addUrl}></img>
         <p className='labelFooterCopy'>Create new label</p>
-      </div>
+      </Link>
     );
 
     const labelContent = (
       <ul className='labelContent'>
-        {this.props.labels.map(label =>
-          <li className='labelLi'>
-            <img className="sidebarIcon" src={window.tagUrl}></img>
-            <p className='labelName'>{label.name}</p>
-          </li>
+        {this.props.labels.map((label, index) => {
+          return (
+            <li
+              className='labelLi'
+              key={index}>
+              <img className="labelIcon" src={window.tagUrl}></img>
+              <p className='labelFooterCopy'>{label.name}</p>
+            </li>
+          )}
         )}
       </ul>
     );

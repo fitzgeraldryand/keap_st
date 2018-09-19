@@ -25,7 +25,6 @@ componentDidMount() {
   const main = document.getElementById('content-main');
   main.addEventListener('scroll', this.handleScroll);
   this.props.fetchNotes();
-  this.props.getLabels();
 }
 
 componentWillUnmount() {
