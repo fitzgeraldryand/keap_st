@@ -49,13 +49,15 @@ class NoteForm extends React.Component {
   // }
 
   submit() {
+    const tab_index = (this.props.notes.length > 0) ? (this.props.notes[0].tab_index + 1) : 0;
+
     if ((Boolean(this.state.title) || Boolean(this.state.body))) {
       this.props.createNote({
           author_id: this.props.currentUser,
           title: this.state.title,
           body: this.state.body,
           color: this.state.color,
-          tab_index: (this.props.notes[0].tab_index + 1),
+          tab_index: tab_index,
           pinned: false
       });
       this.setState({title: "", body: "", color: "rgb(250, 250, 250)"});
