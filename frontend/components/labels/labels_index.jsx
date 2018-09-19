@@ -20,9 +20,9 @@ class LabelIndex extends React.Component {
     const labelHeader = (
       <div className='labelHeader'>
         <p>Labels</p>
-        <div className='labelEdit'>
-          <Link to='/labels'>EDIT</Link>
-        </div>
+        <Link to='/labels' className='labelEdit'>
+          <p>EDIT</p>
+        </Link>
       </div>
     );
 
