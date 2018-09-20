@@ -20,6 +20,7 @@ class LabelModal extends React.Component {
     this.handleUpdateUpdate = this.handleUpdateUpdate.bind(this);
     this.handleUpdateSubmit = this.handleUpdateSubmit.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
   }
 
   componentWillMount() {
@@ -59,7 +60,20 @@ class LabelModal extends React.Component {
     }
   }
 
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
 
+  handleKeyDown(e) {
+    if (e.key === 'Escape') {
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.props.history.push('/');
+    } else if (e.key === 'Enter') {
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.handleSubmit();
+      this.props.history.push('/');
+    }
+  }
 
   handleUpdateUpdate(e) {
     let stateCopy = merge({}, this.state.labels);

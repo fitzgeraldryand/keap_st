@@ -11,6 +11,7 @@ gem 'binding_of_caller'
 gem 'bcrypt'
 gem 'pry-rails'
 gem 'jquery-rails'
+gem 'aws-sdk-s3'
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

@@ -1,3 +1,4 @@
+/* line 1, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteDefaultForm {
   display: flex;
   flex-direction: row;
@@ -15,11 +16,12 @@
   font-weight: 10;
 }
 
+/* line 18, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteDefaultForm:hover {
   cursor: text;
 }
 
-
+/* line 23, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteFormIcons {
   display: flex;
   flex-direction: row;
@@ -28,11 +30,13 @@
   width: 80px;
 }
 
+/* line 31, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteFormIcon {
   height: 25px;
   width: 25px;
 }
 
+/* line 36, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteClickedForm {
   color: #737373;
   background-color: #fafafa;
@@ -48,6 +52,7 @@
   padding: 5px 20px 0 20px;
 }
 
+/* line 51, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .titleDiv {
   display: flex;
   flex-direction: column;
@@ -62,16 +67,19 @@
   margin-top: 10px;
 }
 
+/* line 65, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 #titleForm, #bodyForm {
   width: 100%;
   overflow-wrap: normal;
   height: auto;
 }
 
+/* line 71, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 #bodyForm {
   resize: none;
 }
 
+/* line 75, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .bodyDiv {
   font-family: 'Roboto Slab',serif;
   font-size: 15px;
@@ -85,6 +93,7 @@
   margin-top: 15px;
 }
 
+/* line 88, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .formBottom {
   display: flex;
   flex-direction: row;
@@ -94,6 +103,7 @@
   height: 40px;
 }
 
+/* line 97, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .bottomButtons {
   display: flex;
   flex-direction: row;
@@ -102,6 +112,7 @@
   width: 180px;
 }
 
+/* line 105, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .noteIcon {
   width: 18px;
   height: 18px;
@@ -109,6 +120,7 @@
   cursor: pointer;
 }
 
+/* line 112, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .bottomClose {
   font-size: 13px;
   font-family: 'Roboto',sans-serif;
@@ -122,12 +134,13 @@
   justify-content: center;
 }
 
+/* line 125, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
 .bottomClose:hover {
   cursor: pointer;
   background-color: #00000014;
 }
 
-.image-upload > input
-{
-    display: none;
+/* line 130, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_form.scss */
+.image-upload > input {
+  display: none;
 }

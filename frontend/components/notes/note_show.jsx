@@ -8,7 +8,8 @@ class NoteShow extends React.Component {
     this.state = {
       body: this.props.note.body,
       title: this.props.note.title,
-      color: this.props.note.color || '#fafafa'
+      color: this.props.note.color || '#fafafa',
+      labellingState: {}
     };
     // this.handleOuterClick = this.handleOuterClick.bind(this);
     this.handleDotClick = this.handleDotClick.bind(this);
@@ -17,13 +18,23 @@ class NoteShow extends React.Component {
     this.update = this.update.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
+    const labellingState = {};
+    if newProps.labels
+    newProps.labels.forEach((label) => {
+      labellingState[label.id] = false;
+    });
+    newProps.note.label_ids.forEach((label_id) => {
+      labellingState[label_id] = true;
+    });
     this.setState({
       body: newProps.note.body,
       title: newProps.note.title,
-      color: newProps.note.color});
+      color: newProps.note.color,
+      labellingState: labellingState});
   }
 
   isClassUpdateForm(element) {
@@ -53,6 +64,11 @@ class NoteShow extends React.Component {
   handleKeyDown(e) {
     if (e.key === 'Escape') {
       document.removeEventListener('keydown', this.handleKeyDown);
+      this.props.deleteHiddenNote();
+      this.props.history.push('/');
+    } else if (e.key === 'Enter') {
+      document.removeEventListener('keydown', this.handleKeyDown);
+      this.submit();
       this.props.deleteHiddenNote();
       this.props.history.push('/');
     }
@@ -85,6 +101,20 @@ class NoteShow extends React.Component {
     });
   }
 
+  handleCheck(e) {
+    if (this.state.labellingState[parseInt(e.currentTarget.id)]) {
+      this.props.deleteLabelling({
+        note_id: this.props.note.id,
+        label_id: parseInt(e.currentTarget.id)
+      });
+    } else {
+      this.props.createLabelling({
+        note_id: this.props.note.id,
+        label_id: parseInt(e.currentTarget.id)
+      });
+    }
+  }
+
   handleDotClick(e) {
     e.stopPropagation();
     this.setState({color: e.currentTarget.style.backgroundColor});
@@ -95,6 +125,38 @@ class NoteShow extends React.Component {
 
     const checkmark = (
       <img className="tick" src={window.tickUrl}></img>
+    );
+
+    const labelSelectorModalLi = (
+      this.props.labels.map((label) => {
+        return (
+          <li
+            key={label.id}
+            className='labelSelectorModalLi'>
+            <div
+              id={label.id}
+              className='insideLi'
+              onClick={(e) => this.handleCheck(e)}>
+              <div
+                className={this.state.labellingState[label.id] ? 'clickedDiv' : 'unclickedDiv'}
+                id ={label.id}>
+              </div>
+              <p className='insideLiP' style={{fontFamily:'Roboto'}}>{label.name}</p>
+            </div>
+          </li>
+        )
+      })
+    )
+
+    const labelSelectorModal = (
+      <div className='labelSelectorModalWrapper'>
+        <div className='labelSelectorModal'>
+          <div className='labelSelectorHeader'>Label note</div>
+          <ul className='labelSelector'>
+            {labelSelectorModalLi}
+          </ul>
+        </div>
+      </div>
     );
 
     const colorPaletteModal = (
@@ -151,6 +213,8 @@ class NoteShow extends React.Component {
         </div>
       </div>
     );
+
+    const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
 
     // const updateForm = (
     //   <form className="updateForm"
@@ -218,6 +282,11 @@ class NoteShow extends React.Component {
               form='showForm'
               />
           </div>
+          <div className='noteShowUpdate'>
+            <p className='noteShowUpdateCopy'>
+              Edited: {this.props.note.updated_at}
+            </p>
+          </div>
           <div className='formBottom'>
             <div className='bottomButtons'>
               <img className="noteIcon" src={window.addUserButtonUrl}></img>
@@ -225,7 +294,9 @@ class NoteShow extends React.Component {
                 {colorPaletteModal}
               </span>
               <img className="noteIcon" src={window.frameLandscapeUrl}></img>
-              <img className="noteIcon" src={window.tagUrl}></img>
+              <span id='tagIcon' className="noteIcon">
+                {labelSelectorModal}
+              </span>
               <img onClick={() => this.handleDelete()} className="noteIcon" src={window.garbageUrl}></img>
             </div>
             <div className='bottomClose'>

@@ -11,7 +11,7 @@
 
 class Labelling < ApplicationRecord
   validates :note_id, :label_id, presence: true
-  validates :note_id, uniqueness: {scope: :label_id}
+  validates :label_id, uniqueness: {scope: :note_id}
 
   belongs_to :label,
     primary_key: :id,

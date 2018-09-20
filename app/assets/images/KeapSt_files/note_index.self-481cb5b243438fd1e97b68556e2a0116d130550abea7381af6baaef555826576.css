@@ -1,3 +1,4 @@
+/* line 1, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .lightBulbWrapper {
   background-color: inherit;
   width: calc(100% - 25px);
@@ -9,6 +10,7 @@
   margin-top: 20px;
 }
 
+/* line 12, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .lightBulbContainer {
   min-width: 300px;
   width: inherit;
@@ -18,15 +20,14 @@
   justify-content: center;
 }
 
-.lightBulbIconContainer {
-}
-
+/* line 24, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .lightBulbIcon {
   height: 120px;
   width: 120px;
   margin: 20px;
 }
 
+/* line 30, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .notesCopy {
   color: #9f9f9f;
   background-color: inherit;
@@ -39,18 +40,16 @@
   justify-content: center;
 }
 
+/* line 42, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .notesIndexWrapper {
   background-color: inherit;
   width: calc(100% - 25px);
   min-height: 300px;
-  // display: flex;
-  // flex-direction: column;
-  // align-items: center;
-  // justify-content: center;
   box-sizing: border-box;
   margin: 30px 13px 45px;
 }
 
+/* line 54, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .notesIndex {
   background-color: inherit;
   width: calc(100% - 25px);
@@ -64,7 +63,8 @@
   margin: 13px;
 }
 
-.note-index-item-wrapper{
+/* line 67, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-wrapper {
   width: 240px;
   margin-right: 16px;
   margin-bottom: 16px;
@@ -77,7 +77,8 @@
   position: relative;
 }
 
-.note-index-item{
+/* line 80, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item {
   width: 240px;
   cursor: auto;
   box-sizing: border-box;
@@ -90,9 +91,9 @@
   position: relative;
 }
 
-.note-index-item-wrapper:hover .note-index-item{
+/* line 93, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-wrapper:hover .note-index-item {
   width: 240px;
-  // margin: 16px;
   cursor: auto;
   box-sizing: border-box;
   display: flex;
@@ -104,7 +105,8 @@
   position: relative;
 }
 
-.note-index-item-title{
+/* line 107, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-title {
   background-color: inherit;
   box-sizing: border-box;
   width: 240px;
@@ -121,11 +123,13 @@
   font-weight: bold;
 }
 
-.note-index-item-title{
+/* line 124, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-title {
   height: 0;
 }
 
-.note-index-item-wrapper:hover .note-index-item-title{
+/* line 128, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-wrapper:hover .note-index-item-title {
   background-color: inherit;
   width: 240px;
   box-sizing: border-box;
@@ -142,7 +146,8 @@
   line-height: 23px;
 }
 
-.note-index-item-content{
+/* line 145, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-content {
   background-color: inherit;
   width: 240px;
   height: auto;
@@ -153,7 +158,8 @@
   font-weight: 10;
 }
 
-.note-index-item-wrapper:hover .note-index-item-content{
+/* line 156, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-wrapper:hover .note-index-item-content {
   background-color: inherit;
   width: 240px;
   min-height: 30px;
@@ -164,7 +170,8 @@
   font-weight: 10;
 }
 
-.note-index-item-footer-container{
+/* line 167, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.note-index-item-footer-container {
   background-color: inherit;
   box-sizing: border-box;
   display: flex;
@@ -175,6 +182,7 @@
   height: 34px;
 }
 
+/* line 178, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .note-index-item-footer {
   background-color: inherit;
   box-sizing: border-box;
@@ -188,6 +196,7 @@
   padding: 5px 15px 15px 15px;
 }
 
+/* line 191, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .note-index-item-wrapper:hover .note-index-item-footer {
   background-color: inherit;
   box-sizing: border-box;
@@ -201,6 +210,7 @@
   padding: 5px 15px 10px 15px;
 }
 
+/* line 204, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .noteIcon {
   width: 18px;
   height: 18px;
@@ -208,33 +218,38 @@
   cursor: pointer;
 }
 
+/* line 211, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .noteIcon:hover {
   color: #0000008a;
 }
 
+/* line 215, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 #colorPaletteIcon {
-  background-image: image_url('painter-palette.png');
+  background-image: url(/assets/painter-palette-f0f564dbc64ff31d81e6c82266e020bd8e9ca702e362e0353dc83987a376d7cb.png);
   position: relative;
   width: 18px;
   height: 18px;
   background-size: 100%;
 }
 
+/* line 223, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 #tagIcon {
-  background-image: image_url('tag.png');
+  background-image: url(/assets/tag-7425847ffdf058dca86186b12caee092306fd1555de4a2a33bc97f104386a031.png);
   position: relative;
   width: 18px;
   height: 18px;
   background-size: 100%;
 }
 
+/* line 231, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .colorPaletteDropdownWrapper {
   width: 150px;
   height: 130px;
   display: none;
 }
 
-#colorPaletteIcon:hover .colorPaletteDropdownWrapper{
+/* line 237, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+#colorPaletteIcon:hover .colorPaletteDropdownWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -244,7 +259,8 @@
   left: -5px;
 }
 
-.colorPaletteDropdownWrapper:hover .colorPaletteDropdown{
+/* line 247, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.colorPaletteDropdownWrapper:hover .colorPaletteDropdown {
   width: 138px;
   height: 113px;
   display: flex;
@@ -261,11 +277,13 @@
   padding: 10px;
 }
 
-.colorPaletteDropdown{
+/* line 264, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+.colorPaletteDropdown {
   display: none;
 }
 
-#colorPaletteIcon:hover .colorPaletteDropdown{
+/* line 268, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+#colorPaletteIcon:hover .colorPaletteDropdown {
   width: 138px;
   height: 113px;
   display: flex;
@@ -282,6 +300,7 @@
   padding: 10px;
 }
 
+/* line 285, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .colorDot {
   height: 28px;
   width: 28px;
@@ -293,10 +312,12 @@
   justify-content: center;
 }
 
+/* line 296, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 #colorDotWhite {
   border: 1.5px solid #e8e8e8;
 }
 
+/* line 300, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .colorDot:hover {
   height: 28px;
   width: 28px;
@@ -308,20 +329,24 @@
   justify-content: center;
 }
 
+/* line 311, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 #colorDotWhite:hover {
   border: 1.5px solid #9c9c9c;
 }
 
+/* line 315, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .tick {
   width: 18px;
   height: 18px;
 }
 
+/* line 320, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelectorModalWrapper {
   width: 200px;
   display: none;
 }
 
+/* line 325, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelectorHeader {
   font-size: 14px;
   font-weight: bold;
@@ -331,11 +356,13 @@
   padding: 8px;
 }
 
+/* line 334, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelector {
   display: none;
 }
 
-#tagIcon:hover .labelSelectorModalWrapper{
+/* line 338, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+#tagIcon:hover .labelSelectorModalWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -348,7 +375,8 @@
   color: black;
 }
 
-#tagIcon:hover .labelSelectorModal{
+/* line 351, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
+#tagIcon:hover .labelSelectorModal {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -365,6 +393,7 @@
   font-size: 13px;
 }
 
+/* line 368, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelector {
   width: 100%;
   display: flex;
@@ -374,6 +403,7 @@
   margin-top: 3px;
 }
 
+/* line 377, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelectorModalLi {
   display: flex;
   flex-direction: row;
@@ -386,6 +416,7 @@
   margin: 1px;
 }
 
+/* line 389, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .insideLi {
   width: 90%;
   display: flex;
@@ -394,6 +425,7 @@
   justify-content: space-between;
 }
 
+/* line 397, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .insideLiP {
   width: 90%;
   display: flex;
@@ -402,13 +434,15 @@
   justify-content: flex-start;
 }
 
+/* line 405, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .labelSelectorModalLi:hover {
   background-color: #efe9e9de;
   cursor: pointer;
 }
 
+/* line 410, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .clickedDiv {
-  background-image: image_url('verification-square-button.png');
+  background-image: url(/assets/verification-square-button-0d47106fe5636aa50d1614afc73ae85f0198791eb6d642ab02db33f68b7eb492.png);
   background-size: contain;
   height: 14px;
   width: 14px;
@@ -417,6 +451,7 @@
   margin: 5px;
 }
 
+/* line 420, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/note_index.scss */
 .unclickedDiv {
   height: 14px;
   width: 14px;

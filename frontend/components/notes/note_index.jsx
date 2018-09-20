@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
 import NoteIndexItem from './note_index_item';
+import Masonry from 'react-masonry-component';
 
 class NoteIndex extends React.Component {
   constructor(props) {
@@ -27,18 +28,21 @@ class NoteIndex extends React.Component {
       );
     } else {
       return (
-        <div className='notesIndexWrapper'>
-          <ul className='notesIndex'>
+        <Masonry
+          className='notesIndexWrapper'>
             {this.props.notes.map(note =>
               <NoteIndexItem
                 key={note.id}
                 note={note}
+                labels={this.props.labels}
                 deleteNote={this.props.deleteNote}
                 updateNote={this.props.updateNote}
                 addHiddenNote={this.props.addHiddenNote}
-                hiddenNote={this.props.hiddenNote}/>)}
-          </ul>
-        </div>
+                hiddenNote={this.props.hiddenNote}
+                createLabelling={this.props.createLabelling}
+                deleteLabelling={this.props.deleteLabelling}
+                fetchNote={this.props.fetchNote}/>)}
+        </Masonry>
       );
     }
   }

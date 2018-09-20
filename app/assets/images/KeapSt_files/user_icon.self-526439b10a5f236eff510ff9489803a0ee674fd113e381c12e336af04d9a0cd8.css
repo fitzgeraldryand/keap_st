@@ -1,0 +1,147 @@
+/* line 1, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.dot {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 33px;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: 10;
+  border: 5px solid #fdbd0f;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* line 15, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.dot-active {
+  height: 44px;
+  width: 44px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 33px;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: 10;
+  border: 5px solid #a08c5bab;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* line 29, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.dotLarge {
+  height: 96px;
+  width: 96px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 96px;
+  color: white;
+  font-size: 52px;
+  display: inline-block;
+  font-weight: 400;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* line 42, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.dot:hover {
+  cursor: pointer;
+}
+
+/* line 46, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.dot-active:hover {
+  cursor: pointer;
+}
+
+/* line 50, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userIconDropdown {
+  position: absolute;
+  background: #fff;
+  border: 1px solid #c4c4c4;
+  border-radius: 2px;
+  box-shadow: 0px 0px 5px #555;
+  display: block;
+  right: 8px;
+  top: 62px;
+  color: #000;
+  overflow: hidden;
+  width: 315px;
+  height: 190px;
+  font-size: 13px;
+  font-family: 'Source Sans', sans-serif;
+}
+
+/* line 67, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userInfoWrapper {
+  height: inherit;
+  width: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+/* line 76, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userInfoContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 135px;
+  width: 315px;
+  font-family: 'Google Sans', arial, sans-serif;
+  background-color: #ffffff;
+}
+
+/* line 86, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userInfo {
+  position: inherit;
+  width: 275px;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* line 97, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userIconImage {
+  width: 140px;
+  height: 135px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  position: relative;
+  font-family: 'Google Sans', arial, sans-serif;
+  padding-left: 20px;
+}
+
+/* line 110, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.userLogout {
+  width: 315px;
+  height: 55px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding-right: 20px;
+  border-top: 1px solid #c4c4c4;
+  background-color: #f5f5f5;
+}
+
+/* line 122, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.logoutButton {
+  padding: 7px 15px 7px 15px;
+  color: #676767;
+  border: 1px solid #c6c6c6;
+  font-family: 'Google Sans', arial, sans-serif;
+}
+
+/* line 129, /Users/ryanfitzgerald/Desktop/App_Academy/keap_st/app/assets/stylesheets/user_icon.scss */
+.logoutButton:hover {
+  background-color: #fff;
+  box-shadow: 0 1px 1px #0000001a;
+  border-color: #c6c6c6;
+  cursor: default;
+}

@@ -1,24 +1,28 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createNote } from '../../actions/note_actions';
-import NoteForm from './note_form';
+import { fetchNotes, deleteNote, updateNote } from '../../actions/note_actions';
+import { addHiddenNote } from '../../actions/ui_actions';
 import { selectSortedAllNotes, selectSortedAllLabels } from '../../reducers/selectors.js';
+import NoteIndex from './note_index';
 import {createLabelling, deleteLabelling} from '../../actions/labelling_actions';
 
 const mapStateToProps = (state) => {
   return {
     notes: selectSortedAllNotes(state),
     labels: selectSortedAllLabels(state),
-    currentUser: state.session.id
+    hiddenNote: state.ui.hiddenNoteId
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createNote: (note) => { return dispatch(createNote(note)); },
+    fetchNote: (id) => { return dispatch(fetchNote(id)); },
+    deleteNote: (id) => { return dispatch(deleteNote(id)); },
+    updateNote: (id) => { return dispatch(updateNote(id)); },
+    addHiddenNote: (id) => { return dispatch(addHiddenNote(id));},
     createLabelling: (labelling) => { return dispatch(createLabelling(labelling));},
     deleteLabelling: (labelling) => { return dispatch(deleteLabelling(labelling));}
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(NoteForm);
+export default connect(mapStateToProps, mapDispatchToProps)(NoteIndex);

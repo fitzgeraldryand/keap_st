@@ -4,14 +4,32 @@ import { Link } from 'react-router-dom';
 class NoteIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      labellingState: {}
+    };
     this.handleDotClick = this.handleDotClick.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleCheck = this.handleCheck.bind(this);
   }
 
   handleDelete() {
     this.props.deleteNote(this.props.note.id);
   }
+
+  componentWillReceiveProps(newProps) {
+    const labellingState = {};
+    newProps.labels.forEach((label) => {
+      labellingState[label.id] = false;
+    });
+    newProps.note.label_ids.forEach((label_id) => {
+      labellingState[label_id] = true;
+    });
+    this.setState({labellingState: labellingState});
+  }
+  // componentDidMount() {
+  //   this.props.fetchNotes();
+  // }
 
   handleDotClick(e) {
     this.props.updateNote({
@@ -23,6 +41,20 @@ class NoteIndexItem extends React.Component {
   handleClick() {
     const noteId = this.props.note.id;
     this.props.addHiddenNote(noteId);
+  }
+
+  handleCheck(e) {
+    if (this.state.labellingState[parseInt(e.currentTarget.id)]) {
+      this.props.deleteLabelling({
+        note_id: this.props.note.id,
+        label_id: parseInt(e.currentTarget.id)
+      });
+    } else {
+      this.props.createLabelling({
+        note_id: this.props.note.id,
+        label_id: parseInt(e.currentTarget.id)
+      });
+    }
   }
 
   render() {
@@ -101,18 +133,82 @@ class NoteIndexItem extends React.Component {
         </div>
       </div>
     );
+
+    const labelSelectorModalLi = (
+      this.props.labels.map((label) => {
+        return (
+          <li
+            key={label.id}
+            className='labelSelectorModalLi'>
+            <div
+              id={label.id}
+              className='insideLi'
+              onClick={(e) => this.handleCheck(e)}>
+              <div
+                className={this.state.labellingState[label.id] ? 'clickedDiv' : 'unclickedDiv'}
+                id ={label.id}>
+              </div>
+              <p className='insideLiP'>{label.name}</p>
+            </div>
+          </li>
+        )
+      })
+    )
+
+    const labelSelectorModal = (
+      <div className='labelSelectorModalWrapper'>
+        <div className='labelSelectorModal'>
+          <div className='labelSelectorHeader'>Label note</div>
+          <ul className='labelSelector'>
+            {labelSelectorModalLi}
+          </ul>
+        </div>
+      </div>
+    );
+
+    // <div className='note-index-item-label-div'>
+    //         <ul>
+    //           {(this.props.note.label_ids.length >= 1) ? noteIndexItemLabelLi : ""}
+    //         </ul>
+    //       </div>
+    //
+    // if (this.props.note.label_ids.length >= 1) {
+    //   debugger
+    //   const noteIndexItemLabelLi = (
+    //     this.props.note.label_ids.forEach((label_id) => {
+    //       const label = this.props.labels[label_id]
+    //       return (
+    //         <li
+    //           key={label_id}
+    //           className='noteIndexItemLabelLi'>
+    //           <div className='insideLabelLi'>
+    //             <p className='insideLabelLiP'>{label.name}</p>
+    //           </div>
+    //         </li>
+    //       )
+    //     })
+    //   )
+    // }
+
     return (
       <li
         className="note-index-item-wrapper"
         id={`index-item-${this.props.note.tab_index}`}
-        style={visibilityStyle}
-        onClick={() => this.handleClick()}>
-        <div style={colorStyle} className='note-index-item'>
+        style={visibilityStyle}>
+        <div
+          style={colorStyle}
+          className='note-index-item'>
           <Link to={`/notes/${this.props.note.id}`}>
-            <div style={colorStyle} className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
+            <div
+              onClick={() => this.handleClick()}
+              style={colorStyle}
+              className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
               <p>{this.props.note.title}</p>
             </div>
-            <div style={colorStyle} className={'note-index-item-content'}>
+            <div
+              onClick={() => this.handleClick()}
+              style={colorStyle}
+              className={'note-index-item-content'}>
               {body}
             </div>
           </Link>
@@ -123,7 +219,9 @@ class NoteIndexItem extends React.Component {
                 {colorPaletteModal}
               </span>
               <input type='image' className="noteIcon" src={window.frameLandscapeUrl}></input>
-              <input type='image' className="noteIcon" src={window.tagUrl}></input>
+              <span id='tagIcon' className="noteIcon">
+                {labelSelectorModal}
+              </span>
               <input type='image' className="noteIcon" src={window.garbageUrl} onClick={this.handleDelete}></input>
             </div>
           </div>
