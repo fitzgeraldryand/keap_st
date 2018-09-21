@@ -201,7 +201,7 @@ class NoteIndexItem extends React.Component {
               onClick={() => this.handleClick()}
               style={colorStyle}
               className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
-              <p>{this.props.note.title}</p>
+              {this.props.note.title}
             </div>
             <div
               onClick={() => this.handleClick()}

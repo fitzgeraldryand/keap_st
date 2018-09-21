@@ -125,38 +125,30 @@
   background-color: inherit;
   box-sizing: border-box;
   width: 240px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
+  display: inline-block;
   padding: 10px 15px 0 15px;
   min-height: 38px;
   font-size: 17px;
   font-family: 'Roboto Condensed',sans-serif;
-  line-height: 23px;
+  // line-height: 23px;
   font-weight: bold;
-}
-
-.note-index-item-title{
-  height: 0;
+  white-space:normal;
+  word-wrap: break-word;
 }
 
 .note-index-item-wrapper:hover .note-index-item-title{
   background-color: inherit;
-  width: 240px;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
+  width: 240px;
+  display: inline-block;
   padding: 10px 15px 0 15px;
   min-height: 38px;
-  font-weight: bold;
   font-size: 17px;
   font-family: 'Roboto Condensed',sans-serif;
-  line-height: 23px;
+  // line-height: 23px;
+  font-weight: bold;
+  white-space:normal;
+  word-wrap: break-word;
 }
 
 .note-index-item-content{

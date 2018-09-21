@@ -10,7 +10,7 @@ class Api::NotesController < ApplicationController
       if params[:text] == ""
         @notes = current_user.notes.order(tab_index: :desc)
       else
-        @notes = current_user.notes.where("title ILIKE '#{params[:text]}%' OR body ILIKE '%#{params[:text]}%'").order(tab_index: :desc)
+        @notes = current_user.notes.where("title ILIKE '%#{params[:text]}%' OR body ILIKE '%#{params[:text]}%'").order(tab_index: :desc)
       end
     end
     render :index
