@@ -30,8 +30,10 @@ class UserIcon extends React.Component {
   handleClickIcon(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.toggleClicked();
-    document.addEventListener('mousedown', this.handleOuterClick);
+    if (!this.state.clicked) {
+      this.toggleClicked();
+      document.addEventListener('mousedown', this.handleOuterClick);
+    } 
   }
 
   handleOuterClick(e) {

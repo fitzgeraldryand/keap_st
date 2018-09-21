@@ -61,6 +61,14 @@
 //   padding: 10px 20px;
 // }
 
+.headerAndSearch {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .header-list {
   display: flex;
   flex-direction: row;

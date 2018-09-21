@@ -27,6 +27,7 @@ class LoginForm2 extends React.Component {
     e.preventDefault();
     const user = merge({email: this.props.email}, this.state);
     this.props.processForm(user);
+    this.props.history.push('/');
   }
 
   renderErrors() {

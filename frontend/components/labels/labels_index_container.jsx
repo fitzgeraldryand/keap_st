@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch) => {
     createLabel: (label) => { return dispatch(LabelActions.createLabel(label)); },
     updateLabels: () => { return dispatch(LabelActions.getLabels()); },
     updateFilter: (filter, value) => { return dispatch(updateFilter(filter, value)); },
-    removeFilter: (value) => { return dispatch(removeFilter(filter)); }
+    // removeFilter: (value) => { return dispatch(removeFilter(filter)); }
   };
 };
 

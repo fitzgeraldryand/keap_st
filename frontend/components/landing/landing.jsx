@@ -6,6 +6,7 @@ import NoteIndex from '../notes/note_index.jsx';
 import NoteIndexContainer from '../notes/note_index_container.jsx';
 import NoteFormContainer from '../notes/note_form_container.jsx';
 import LabelIndexContainer from '../labels/labels_index_container.jsx';
+import SearchContainer from '../search/search_container.jsx';
 
 class Landing extends React.Component {
   constructor(props) {
@@ -54,23 +55,29 @@ handleRemoveFilter() {
 
   render() {
     // const colorStyle = {backgroundColor: this.randomUserColor()};
-
     const headerArea = (
       <div className="header-logo">
         <Link to="/" id='homeLink'>
-          <img className="logo" src={window.blackLogoUrl}></img>
+          <img className="logo" src={window.blackLogoUrl} onClick={() => this.handleRemoveFilter()}></img>
         </Link>
         <br/>
-        <Link to="/" id='homeLink'>
+        <Link to="/" id='homeLink' onClick={() => this.handleRemoveFilter()}>
           Keep
         </Link>
       </div>
     );
 
+    // <div className='searchArea'>
+    //   {searchArea}
+    // </div>
+
     return (
       <div className='wrapper'>
         <div className={this.state.scrolled ? "header-nav-with-shadow" : "header-nav"}>
-          {headerArea}
+          <div className='headerAndSearch'>
+            {headerArea}
+            <SearchContainer/>
+          </div>
           <ul className="header-list">
             <li></li>
             <li></li>

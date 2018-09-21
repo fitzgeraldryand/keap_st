@@ -1,9 +1,19 @@
 class Api::NotesController < ApplicationController
   def index
-    if params[:label_id] == '-1'
-      @notes = current_user.notes.order(tab_index: :desc)
-    else
-      @notes = Label.find(params[:label_id]).notes.where('author_id = ?', current_user.id).order(tab_index: :desc)
+    if params[:label_id]
+      if params[:label_id] == '-1'
+        @notes = current_user.notes.order(tab_index: :desc)
+      else
+        @notes = Label.find(params[:label_id]).notes.where('author_id = ?', current_user.id).order(tab_index: :desc)
+      end
+    elsif params[:text]
+      if params[:text] == ""
+        @notes = current_user.notes.order(tab_index: :desc)
+      else
+        upper = params[:text].upcase
+        downer = params[:text].downcase
+        @notes = current_user.notes.where("title LIKE '%#{upper}%' OR title LIKE '%#{downer}%' OR body LIKE '%#{upper}%' OR body like '%#{upper}%'").order(tab_index: :desc)
+      end
     end
     render :index
   end
