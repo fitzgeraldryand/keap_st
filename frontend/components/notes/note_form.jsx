@@ -305,8 +305,6 @@ class NoteForm extends React.Component {
         </div>
         <div className='bodyDiv'>
           <textarea
-            cols='50'
-            wrap='hard'
             id="bodyForm"
             form='newForm'
             value={this.state.body || ''}

@@ -31,20 +31,25 @@ class UserIcon extends React.Component {
     e.preventDefault();
     e.stopPropagation();
     if (!this.state.clicked) {
-      this.toggleClicked();
-      document.addEventListener('mousedown', this.handleOuterClick);
-    } 
+      document.addEventListener('mouseup', this.handleOuterClick);
+    } else if (this.state.clicked) {
+      document.removeEventListener('mouseup', this.handleOuterClick);
+    }
+    this.toggleClicked();
   }
 
   handleOuterClick(e) {
-    if (this.state.clicked && (e.path[0].className === 'logoutButton')) {
+    if (this.state.clicked && (e.path[0].className === 'dot-active')) {
+      return "";
+    }
+    else if (this.state.clicked && (e.path[0].className === 'logoutButton')) {
       this.handleLogout(e);
     }
-    if (this.state.clicked && (e.path[0].className !== 'logoutButton') && e.path.some(this.isClassUserInfo)) {
+    else if (this.state.clicked && (e.path[0].className !== 'logoutButton') && e.path.some(this.isClassUserInfo)) {
       e.stopPropagation();
     } else {
       this.toggleClicked();
-      document.removeEventListener('mousedown', this.handleOuterClick);
+      document.removeEventListener('mouseup', this.handleOuterClick);
     }
   }
 
