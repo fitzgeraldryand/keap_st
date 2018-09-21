@@ -22,6 +22,7 @@ class Search extends React.Component {
   handleClick() {
     if (!this.state.clicked) {
       this.setState({clicked: !this.state.clicked});
+      this.props.history.push('/');
       this.props.updateFilter('label_id', -1);
     }
     document.addEventListener('mousedown', this.handleOuterClick);
@@ -54,10 +55,14 @@ class Search extends React.Component {
     return element.className === 'searchAreaClicked' || element.className === 'searchArea';
   }
 
+  isClassLabel(element) {
+    return element.className === 'label-section';
+  }
+
   handleOuterClick(e) {
     if (e.path.some(this.isClassUserInfo)) {
       this.handleClick();
-    } else if (e.path.some(this.isNoteHeaderContent)) {
+    } else if (e.path.some(this.isNoteHeaderContent) || e.path.some(this.isClassLabel)) {
       document.removeEventListener('mousedown', this.handleOuterClick);
       document.removeEventListener('keydown', this.handleKeyDown);
       this.setState({text: '', previousText: ''});
@@ -87,4 +92,4 @@ class Search extends React.Component {
   }
 }
 
-export default Search;
+export default withRouter(Search);
