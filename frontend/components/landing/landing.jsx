@@ -25,7 +25,7 @@ class Landing extends React.Component {
 componentDidMount() {
   const main = document.getElementById('content-main');
   main.addEventListener('scroll', this.handleScroll);
-  if (window.location.hash != '#/') {
+  if (window.location.hash.includes('?label_id=')) {
     // this.props.fetchNotes();
     this.props.updateFilter('label_id', window.location.hash.slice(12));
   } else {

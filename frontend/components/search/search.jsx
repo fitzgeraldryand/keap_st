@@ -13,7 +13,7 @@ class Search extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
-    this.handleSearchClick = this.handleSearchClick.bind(this);
+    // this.handleSearchClick = this.handleSearchClick.bind(this);
     this.handleOuterClick = this.handleOuterClick.bind(this);
     this.isNoteHeaderContent = this.isNoteHeaderContent.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -35,15 +35,16 @@ class Search extends React.Component {
   }
 
   handleChange(e) {
-      const prevState = merge({}, this.state.text);
-      this.setState({previousText: prevState});
-      this.setState({text: e.currentTarget.value});
-      this.props.updateFilter('text', this.state.text);
+      // const prevState = merge({}, this.state.text);
+      // this.setState({previousText: prevState});
+      this.setState({text: e.currentTarget.value}, () => {
+        this.props.updateFilter('text', this.state.text);
+      });
   }
-
-  handleSearchClick(e) {
-    this.props.updateFilter('text', this.state.text);
-  }
+  //
+  // handleSearchClick(e) {
+  //   this.props.updateFilter('text', this.state.text);
+  // }
 
   isNoteHeaderContent(element) {
     return element.className === 'noteHeaderContent';
@@ -54,9 +55,7 @@ class Search extends React.Component {
   }
 
   handleOuterClick(e) {
-    if (e.path[0].className === 'magnifyingGlassIcon') {
-      this.handleSearchClick(e);
-    } else if (e.path.some(this.isClassUserInfo)) {
+    if (e.path.some(this.isClassUserInfo)) {
       this.handleClick();
     } else if (e.path.some(this.isNoteHeaderContent)) {
       document.removeEventListener('mousedown', this.handleOuterClick);
