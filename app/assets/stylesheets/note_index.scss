@@ -367,6 +367,9 @@
   width: 150px;
   height: 130px;
   display: none;
+  position: absolute;
+  bottom: 0px;
+  left: -3px;
 }
 
 #colorPaletteIcon:hover .colorPaletteDropdownWrapper{
@@ -375,8 +378,8 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  bottom: 20px;
-  left: -5px;
+  bottom: 0px;
+  left: -3px;
 }
 
 .colorPaletteDropdownWrapper:hover .colorPaletteDropdown{
@@ -387,8 +390,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  left: 0px;
-  bottom: 0px;
+  top: 0px;
+  right: 0px;
   overflow: hidden;
   background: #fff;
   position: absolute;
@@ -408,8 +411,8 @@
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  left: 0px;
-  bottom: 0px;
+  top: 0px;
+  right: 0px;
   overflow: hidden;
   background: #fff;
   position: absolute;
@@ -473,11 +476,12 @@
 
 #tagIcon:hover .labelSelectorModalWrapper{
   display: flex;
+  height: 110px;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 340px;
+  top: -15px;
   left: -5px;
   z-index: 2;
   cursor: default;

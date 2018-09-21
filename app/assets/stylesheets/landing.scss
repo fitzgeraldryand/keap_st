@@ -53,6 +53,12 @@
   font-size: 20px;
 }
 
+.bottom-buffer {
+  height: 20px;
+  width: calc(100% - 280px);
+  position: relative;
+}
+
 // .homeLink{
 //   display: flex;
 //   flex-direction: row;
