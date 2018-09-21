@@ -5,11 +5,13 @@ import { deleteHiddenNote } from '../../actions/ui_actions';
 import { selectSortedAllNotes, selectSortedAllLabels } from '../../reducers/selectors.js';
 import NoteShow from './note_show.jsx';
 import {createLabelling, deleteLabelling} from '../../actions/labelling_actions';
+import { getLabels } from '../../actions/label_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
     labels: selectSortedAllLabels(state) || [],
-    note: state.entities.notes[ownProps.match.params.note_id] || {},
+    labelsObj: state.entities.labels || {},
+    note: state.entities.notes[ownProps.match.params.note_id] || { label_ids: [] },
     hiddenNote: state.ui.hiddenNote
   };
 };
@@ -17,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     fetchNote: (id) => { return dispatch(fetchNote(id)); },
+    getLabels: () => { return dispatch(getLabels()); },
     deleteNote: (id) => { return dispatch(deleteNote(id)); },
     updateNote: (id) => { return dispatch(updateNote(id)); },
     deleteHiddenNote: () => { return dispatch(deleteHiddenNote());},

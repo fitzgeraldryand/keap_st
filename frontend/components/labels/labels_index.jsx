@@ -1,11 +1,14 @@
 import React from 'react';
 import { Link, NavLink, Route } from 'react-router-dom';
 import LabelModal from './label_modal.jsx';
+import { withRouter } from 'react-router';
+
 
 class LabelIndex extends React.Component {
   constructor(props) {
     super(props);
     this.handleLink = this.handleLink.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -14,6 +17,16 @@ class LabelIndex extends React.Component {
 
   handleLink(e) {
     this.props.history.push('/labels');
+  }
+
+  isClassDefaultForm(element) {
+    return element.className === 'noteDefaultForm';
+  }
+
+
+  handleClick(e) {
+    this.props.updateFilter('label_id', parseInt(e.currentTarget.id));
+    this.props.history.push(`?label_id=${parseInt(e.currentTarget.id)}`);
   }
 
   render() {
@@ -35,11 +48,13 @@ class LabelIndex extends React.Component {
 
     const labelContent = (
       <ul className='labelContent'>
-        {this.props.labels.map((label, index) => {
+        {this.props.labels.map((label) => {
           return (
             <li
               className='labelLi'
-              key={index}>
+              key={label.id}
+              id={label.id}
+              onClick={(e) => this.handleClick(e)}>
               <img className="labelIcon" src={window.tagUrl}></img>
               <p className='labelFooterCopy'>{label.name}</p>
             </li>
@@ -47,17 +62,14 @@ class LabelIndex extends React.Component {
         )}
       </ul>
     );
-
     return (
-      <div className='content-sidebar'>
         <div className = 'label-section'>
           {labelHeader}
           {labelContent}
           {labelFooter}
         </div>
-      </div>
     )
   }
 }
 
-export default LabelIndex;
+export default withRouter(LabelIndex);

@@ -4,8 +4,8 @@ export const RECEIVE_ALL_NOTES = "RECEIVE_ALL_NOTES";
 export const RECEIVE_NOTE = "RECEIVE_NOTE";
 export const REMOVE_NOTE = "REMOVE_NOTE";
 
-export const fetchNotes = () => dispatch => (
-  NoteApiUtil.fetchNotes().then(notes => dispatch(receiveAllNotes(notes)))
+export const fetchNotes = (filter, value) => dispatch => (
+  NoteApiUtil.fetchNotes(filter, value).then(notes => dispatch(receiveAllNotes(notes)))
 );
 
 export const fetchNote = id => dispatch => (

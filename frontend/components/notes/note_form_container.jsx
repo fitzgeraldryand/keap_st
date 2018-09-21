@@ -7,8 +7,9 @@ import {createLabelling, deleteLabelling} from '../../actions/labelling_actions'
 
 const mapStateToProps = (state) => {
   return {
-    notes: selectSortedAllNotes(state),
-    labels: selectSortedAllLabels(state),
+    notes: selectSortedAllNotes(state) || { label_ids: [] },
+    labels: selectSortedAllLabels(state) || [],
+    labelsObj: state.entities.notes || {},
     currentUser: state.session.id
   };
 };

@@ -40,11 +40,14 @@ class Note < ApplicationRecord
   has_many :labellings,
     primary_key: :id,
     foreign_key: :note_id,
-    class_name: 'Labelling'
+    class_name: 'Labelling',
+    inverse_of: :note
 
   has_many :labels,
     through: :labellings,
     source: :label
 
   has_one_attached :photo
+
+  accepts_nested_attributes_for :labellings
 end

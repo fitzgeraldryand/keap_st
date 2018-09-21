@@ -24,7 +24,12 @@ class Landing extends React.Component {
 componentDidMount() {
   const main = document.getElementById('content-main');
   main.addEventListener('scroll', this.handleScroll);
-  this.props.fetchNotes();
+  if (window.location.hash != '#/') {
+    // this.props.fetchNotes();
+    this.props.updateFilter('label_id', window.location.hash.slice(12));
+  } else {
+    this.props.fetchNotes();
+  }
 }
 
 componentWillUnmount() {
@@ -42,20 +47,30 @@ handleScroll(e) {
   }
 }
 
+handleRemoveFilter() {
+  this.props.updateFilter('label_id',-1);
+  this.props.history.push('/');
+}
+
   render() {
     // const colorStyle = {backgroundColor: this.randomUserColor()};
+
+    const headerArea = (
+      <div className="header-logo">
+        <Link to="/" id='homeLink'>
+          <img className="logo" src={window.blackLogoUrl}></img>
+        </Link>
+        <br/>
+        <Link to="/" id='homeLink'>
+          Keep
+        </Link>
+      </div>
+    );
+
     return (
       <div className='wrapper'>
         <div className={this.state.scrolled ? "header-nav-with-shadow" : "header-nav"}>
-          <div className="header-logo">
-            <Link to="/" id='homeLink'>
-              <img className="logo" src={window.blackLogoUrl}></img>
-            </Link>
-            <br/>
-            <Link to="/" id='homeLink'>
-              Keep
-            </Link>
-          </div>
+          {headerArea}
           <ul className="header-list">
             <li></li>
             <li></li>
@@ -65,8 +80,15 @@ handleScroll(e) {
           </ul>
         </div>
         <div className='sidebarContainer'>
-          <LabelIndexContainer/>
-        </div>
+          <div className='content-sidebar'>
+            <div className='noteHeaderContent'
+              onClick={() => this.handleRemoveFilter()}>
+              <img className="noteHeaderIcon" src={window.lightbulb2Url}></img>
+              <p className='noteHeaderCopy'>Notes</p>
+            </div>
+            <LabelIndexContainer/>
+          </div>
+      </div>
         <section className="content-main" id='content-main'>
           <NoteFormContainer/>
           <NoteIndexContainer/>

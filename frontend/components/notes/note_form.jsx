@@ -1,4 +1,5 @@
 import React from 'react';
+import { merge, _ } from 'lodash';
 
 class NoteForm extends React.Component {
   constructor(props) {
@@ -59,8 +60,16 @@ class NoteForm extends React.Component {
   //   e.stopPropagation();
   // }
 
+
   submit() {
     const tab_index = (this.props.notes.length > 0) ? (this.props.notes[0].tab_index + 1) : 0;
+    const labels = Object.keys(this.state.labellingState);
+    const labelsFormatted = [];
+    labels.forEach((key) => {
+      if (this.state.labellingState[parseInt(key)] === true) {
+        labelsFormatted.push({label_id: parseInt(key)});
+      }
+    });
 
     if ((Boolean(this.state.title) || Boolean(this.state.body))) {
       this.props.createNote({
@@ -69,7 +78,8 @@ class NoteForm extends React.Component {
           body: this.state.body,
           color: this.state.color,
           tab_index: tab_index,
-          pinned: false
+          pinned: false,
+          labellings_attributes: labelsFormatted
       });
       this.setState({title: "", body: "", color: "rgb(250, 250, 250)"});
     } else {
@@ -92,9 +102,10 @@ class NoteForm extends React.Component {
       document.removeEventListener('mousedown', this.handleOuterClick);
       document.removeEventListener('keydown', this.handleKeyDown);
       this.toggleClicked();
-    } else if (e.key === 'Enter') {
-      this.handleSubmit(e);
     }
+    //   else if (e.key === 'Enter') {
+    //   this.handleSubmit(e);
+    // }
   }
 
   handleOuterClick(e) {
@@ -108,19 +119,14 @@ class NoteForm extends React.Component {
     }
   }
 
-  // handleCheck(e) {
-  //   if (this.state.labellingState[parseInt(e.currentTarget.id)]) {
-  //     this.props.deleteLabelling({
-  //       note_id: this.props.note.id,
-  //       label_id: parseInt(e.currentTarget.id)
-  //     });
-  //   } else {
-  //     this.props.createLabelling({
-  //       note_id: this.props.note.id,
-  //       label_id: parseInt(e.currentTarget.id)
-  //     });
-  //   }
-  // }
+  handleCheck(e) {
+    const copiedState = merge({}, this.state.labellingState);
+    copiedState[parseInt(e.currentTarget.id)] = !this.state.labellingState[parseInt(e.currentTarget.id)];
+
+    this.setState(
+      {labellingState: copiedState}
+    );
+  }
 
   // componentDidMount() {
   //   document.addEventListener('mousedown', this.handleClick, false);
@@ -128,6 +134,17 @@ class NoteForm extends React.Component {
   //
   // componentWillUnmount() {
   //   document.removeEventListener('mousedown', this.handleClick, false);
+  // }
+
+  // formatLabels() {
+  //   const labels = Object.keys(this.state.labellingState);
+  //   const labelsForDiv = [];
+  //   labels.forEach((key) => {
+  //     if (this.state.labellingState[parseInt(key)] === true) {
+  //       labelsForDiv.push(parseInt(key));
+  //     }
+  //   });
+  //   return labelsForDiv;
   // }
 
   render() {
@@ -152,37 +169,70 @@ class NoteForm extends React.Component {
       </div>
     );
 
-    // const labelSelectorModalLi = (
-    //   this.props.labels.map((label) => {
+    const labelSelectorModalLi = (
+      this.props.labels.map((label) => {
+        return (
+          <li
+            key={label.id}
+            className='labelSelectorModalLi'>
+            <div
+              id={label.id}
+              className='insideLi'
+              onClick={(e) => this.handleCheck(e)}>
+              <div
+                className={this.state.labellingState[label.id] ? 'clickedDiv' : 'unclickedDiv'}
+                id ={label.id}>
+              </div>
+              <p className='insideLiP'>{label.name}</p>
+            </div>
+          </li>
+        )
+      })
+    )
+
+    const labelSelectorModal = (
+      <div className='labelSelectorModalWrapper'>
+        <div className='labelSelectorModal'>
+          <div className='labelSelectorHeader'>Label note</div>
+          <ul className='labelSelector'>
+            {labelSelectorModalLi}
+          </ul>
+        </div>
+      </div>
+    );
+    <span id='tagIcon' className="noteIcon">
+    </span>
+
+    // const noteIndexItemLabelLi = (
+    //   const labels = Object.keys(this.state.labellingState);
+    //   const labelsForDiv = [];
+    //   labels.forEach((key) => {
+    //     if (this.state.labellingState[parseInt(key)] === true) {
+    //       labelsForDiv.push(parseInt(key));
+    //     }
+    //   });
+    //   labelsForDiv.map((label_id) => {
+    //     const label = this.props.labelsObj[label_id]
     //     return (
     //       <li
-    //         key={label.id}
-    //         className='labelSelectorModalLi'>
-    //         <div
-    //           id={label.id}
-    //           className='insideLi'
-    //           onClick={(e) => this.handleCheck(e)}>
-    //           <div
-    //             className={this.state.labellingState[label.id] ? 'clickedDiv' : 'unclickedDiv'}
-    //             id ={label.id}>
-    //           </div>
-    //           <p className='insideLiP'>{label.name}</p>
+    //         id={label_id}
+    //         key={label_id}
+    //         onClick={(e)=> this.handleCheck(e)}
+    //         className='noteIndexItemLabelLi'>
+    //         <div className='insideLabelLi'>
+    //           <p className='insideLabelLiP'>{label.name}</p>
+    //           <p
+    //             id={label_id}
+    //             className='deleteLabel'>X</p>
     //         </div>
     //       </li>
     //     )
     //   })
     // )
-    //
-    // const labelSelectorModal = (
-    //   <div className='labelSelectorModalWrapper'>
-    //     <div className='labelSelectorModal'>
-    //       <div className='labelSelectorHeader'>Label note</div>
-    //       <ul className='labelSelector'>
-    //         {labelSelectorModalLi}
-    //       </ul>
-    //     </div>
-    //   </div>
-    // );
+
+    // <ul className='note-index-item-label-div'>
+    //   {noteIndexItemLabelLi}
+    // </ul>
 
     const colorPaletteModal = (
       <div className = "colorPaletteDropdownWrapper">
@@ -268,13 +318,14 @@ class NoteForm extends React.Component {
             <span className="noteIcon" id='colorPaletteIcon'>
               {colorPaletteModal}
             </span>
-            <div class="image-upload">
+            <div className="image-upload">
               <label for="imgIcon">
                 <img className="noteIcon" src={window.frameLandscapeUrl}></img>
               </label>
               <input id="imgIcon" type="file"/>
             </div>
             <span id='tagIcon' className="noteIcon">
+              {labelSelectorModal}
             </span>
           </div>
           <div className='bottomClose'>

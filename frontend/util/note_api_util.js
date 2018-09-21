@@ -8,10 +8,13 @@ export const createNote = (note) => {
   });
 };
 
-export const fetchNotes = () => {
+export const fetchNotes = (filter = 'label_id', value = -1) => {
   return $.ajax({
     method: 'GET',
-    url: '/api/notes'
+    url: '/api/notes',
+    data: {
+      [filter]: value
+    }
   });
 };
 

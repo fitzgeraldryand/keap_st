@@ -5,11 +5,18 @@ import { browserHistory } from 'react-router';
 class NoteShow extends React.Component {
   constructor(props) {
     super(props);
+    const labellingState = {};
+    this.props.labels.forEach((label) => {
+      labellingState[label.id] = false;
+    });
+    this.props.note.label_ids.forEach((label_id) => {
+      labellingState[label_id] = true;
+    });
     this.state = {
       body: this.props.note.body,
       title: this.props.note.title,
       color: this.props.note.color || '#fafafa',
-      labellingState: {}
+      labellingState: labellingState
     };
     // this.handleOuterClick = this.handleOuterClick.bind(this);
     this.handleDotClick = this.handleDotClick.bind(this);
@@ -23,7 +30,6 @@ class NoteShow extends React.Component {
 
   componentWillReceiveProps(newProps) {
     const labellingState = {};
-    if newProps.labels
     newProps.labels.forEach((label) => {
       labellingState[label.id] = false;
     });
@@ -47,6 +53,7 @@ class NoteShow extends React.Component {
   }
 
   componentDidMount() {
+    this.props.getLabels();
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
@@ -66,12 +73,13 @@ class NoteShow extends React.Component {
       document.removeEventListener('keydown', this.handleKeyDown);
       this.props.deleteHiddenNote();
       this.props.history.push('/');
-    } else if (e.key === 'Enter') {
-      document.removeEventListener('keydown', this.handleKeyDown);
-      this.submit();
-      this.props.deleteHiddenNote();
-      this.props.history.push('/');
     }
+    //   else if (e.key === 'Enter') {
+    //   document.removeEventListener('keydown', this.handleKeyDown);
+    //   this.submit();
+    //   this.props.deleteHiddenNote();
+    //   this.props.history.push('/');
+    // }
   }
 
   submit() {
@@ -141,7 +149,7 @@ class NoteShow extends React.Component {
                 className={this.state.labellingState[label.id] ? 'clickedDiv' : 'unclickedDiv'}
                 id ={label.id}>
               </div>
-              <p className='insideLiP' style={{fontFamily:'Roboto'}}>{label.name}</p>
+              <p className='insideLiP'>{label.name}</p>
             </div>
           </li>
         )
@@ -214,6 +222,23 @@ class NoteShow extends React.Component {
       </div>
     );
 
+    const noteIndexItemLabelLi = (
+      this.props.note.label_ids.map((label_id) => {
+        const label = this.props.labelsObj[label_id]
+        return (
+          <li
+            key={label_id}
+            className='shownoteIndexItemLabelLi'>
+            <div className='insideLabelLi'>
+              <p className='showinsideLabelLiP'>{label.name}</p>
+            </div>
+          </li>
+        )
+      })
+    )
+
+
+
     const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
 
     // const updateForm = (
@@ -283,6 +308,9 @@ class NoteShow extends React.Component {
               />
           </div>
           <div className='noteShowUpdate'>
+            <ul className='note-index-item-label-div-show'>
+              {noteIndexItemLabelLi}
+            </ul>
             <p className='noteShowUpdateCopy'>
               Edited: {this.props.note.updated_at}
             </p>
@@ -299,9 +327,7 @@ class NoteShow extends React.Component {
               </span>
               <img onClick={() => this.handleDelete()} className="noteIcon" src={window.garbageUrl}></img>
             </div>
-            <div className='bottomClose'>
-              <button>CLOSE</button>
-            </div>
+            <button className='bottomClose'>CLOSE</button>
           </div>
         </form>
       </div>

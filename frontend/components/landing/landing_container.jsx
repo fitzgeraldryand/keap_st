@@ -4,6 +4,7 @@ import { logout } from '../../actions/session_actions';
 import { fetchNotes } from '../../actions/note_actions';
 import Landing from './landing';
 import * as LabelActions from '../../actions/label_actions';
+import { updateFilter } from '../../actions/filter_actions.jsx';
 
 const currentEmail = (state) => {
   const userObj = state.entities.users[state.session.id];
@@ -13,15 +14,17 @@ const currentEmail = (state) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.session.id,
-    currentEmail: currentEmail(state)
+    currentEmail: currentEmail(state),
+    filters: state.ui.filters
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => { return dispatch(logout()); },
-    fetchNotes: () => { return dispatch(fetchNotes()); },
-    getLabels: () => { return dispatch(LabelActions.getLabels()); }
+    fetchNotes: (filter, value) => { return dispatch(fetchNotes(filter, value)); },
+    getLabels: () => { return dispatch(LabelActions.getLabels()); },
+    updateFilter: (filter, value) => { return dispatch(updateFilter(filter, value)); }
   };
 };
 

@@ -26,17 +26,45 @@
   padding: 5px 20px 0 20px;
 }
 
+#noteShowLabelSelector {
+  font-family: 'Roboto', sans-serif;
+}
+
 .noteShowUpdate {
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
-  align-items: flex-end;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 8px;
+  padding-bottom: 8px;
 }
 
 .noteShowUpdateCopy {
   font-family: 'Roboto', sans-serif;
   font-style: italic;
+  width: 40%;
   font-size: 12px;
   color: #0000008a;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.note-index-item-label-div-show {
+  background-color: inherit;
+  width: 60%;
+  min-height: 30px;
+  height: auto;
+  padding: 2px 0;
+  font-family: 'Roboto Slab',serif;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  font-weight: 10;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
 }

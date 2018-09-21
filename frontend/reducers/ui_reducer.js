@@ -1,19 +1,10 @@
-import {RECEIVE_HIDDEN_NOTE, REMOVE_CURRENT_HIDDEN_NOTE} from '../actions/ui_actions.jsx';
+import { combineReducers } from 'redux';
+// import benches from './benches_reducer';
+// import reviews from './reviews_reducer';
+import hiddenUserReducer from './hidden_user_reducer';
+import filtersReducer from './filters_reducer';
 
-const _nullNote = Object.freeze({
-  hiddenNoteId: null
+export default combineReducers({
+  hiddenUser: hiddenUserReducer,
+  filters: filtersReducer
 });
-
-const uiReducer = (state = _nullNote, action) => {
-  Object.freeze(state);
-  switch (action.type) {
-    case RECEIVE_HIDDEN_NOTE:
-      return { hiddenNoteId: action.id };
-    case REMOVE_CURRENT_HIDDEN_NOTE:
-      return _nullNote;
-    default:
-      return state;
-  }
-};
-
-export default uiReducer;

@@ -1,6 +1,10 @@
 class Api::NotesController < ApplicationController
   def index
-    @notes = current_user.notes.order(tab_index: :desc)
+    if params[:label_id] == '-1'
+      @notes = current_user.notes.order(tab_index: :desc)
+    else
+      @notes = Label.find(params[:label_id]).notes.where('author_id = ?', current_user.id).order(tab_index: :desc)
+    end
     render :index
   end
 
@@ -34,6 +38,6 @@ class Api::NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title,:body, :author_id, :color, :tab_index, :pinned)
+    params.require(:note).permit(:title,:body, :author_id, :color, :tab_index, :pinned, labellings_attributes: [:label_id])
   end
 end

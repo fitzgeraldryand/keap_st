@@ -10,7 +10,6 @@
 #
 
 class Labelling < ApplicationRecord
-  validates :note_id, :label_id, presence: true
   validates :label_id, uniqueness: {scope: :note_id}
 
   belongs_to :label,
@@ -21,5 +20,6 @@ class Labelling < ApplicationRecord
   belongs_to :note,
     primary_key: :id,
     foreign_key: :note_id,
-    class_name: 'Note'
+    class_name: 'Note',
+    inverse_of: :labellings
 end

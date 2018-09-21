@@ -9,8 +9,17 @@ class NoteIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchNotes();
+    this.props.getLabels();
   }
+
+  // componentDidMount() {
+  //   if (window.location.hash != '#/') {
+  //     this.props.fetchNotes();
+  //     this.props.updateFilter('label_id', window.location.hash.slice(12));
+  //   } else {
+  //     this.props.fetchNotes();
+  //   }
+  // }
 
   render() {
     if (this.props.notes.length === 0) {
@@ -41,7 +50,9 @@ class NoteIndex extends React.Component {
                 hiddenNote={this.props.hiddenNote}
                 createLabelling={this.props.createLabelling}
                 deleteLabelling={this.props.deleteLabelling}
-                fetchNote={this.props.fetchNote}/>)}
+                fetchNote={this.props.fetchNote}
+                getLabels={this.props.getLabels}
+                labelsObj={this.props.labelsObj}/>)}
         </Masonry>
       );
     }

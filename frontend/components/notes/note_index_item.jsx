@@ -43,6 +43,10 @@ class NoteIndexItem extends React.Component {
     this.props.addHiddenNote(noteId);
   }
 
+  componentDidMount() {
+    this.props.getLabels();
+  }
+
   handleCheck(e) {
     if (this.state.labellingState[parseInt(e.currentTarget.id)]) {
       this.props.deleteLabelling({
@@ -166,29 +170,23 @@ class NoteIndexItem extends React.Component {
       </div>
     );
 
-    // <div className='note-index-item-label-div'>
-    //         <ul>
-    //           {(this.props.note.label_ids.length >= 1) ? noteIndexItemLabelLi : ""}
-    //         </ul>
-    //       </div>
-    //
-    // if (this.props.note.label_ids.length >= 1) {
-    //   debugger
-    //   const noteIndexItemLabelLi = (
-    //     this.props.note.label_ids.forEach((label_id) => {
-    //       const label = this.props.labels[label_id]
-    //       return (
-    //         <li
-    //           key={label_id}
-    //           className='noteIndexItemLabelLi'>
-    //           <div className='insideLabelLi'>
-    //             <p className='insideLabelLiP'>{label.name}</p>
-    //           </div>
-    //         </li>
-    //       )
-    //     })
-    //   )
-    // }
+    const noteIndexItemLabelLi = (
+      this.props.note.label_ids.map((label_id) => {
+        const label = this.props.labelsObj[label_id]
+        return (
+          <li
+            id={label_id}
+            key={label_id}
+            onClick={(e)=> this.handleCheck(e)}
+            className='noteIndexItemLabelLi'>
+              <p className='insideLabelLiP'>{label.name}</p>
+              <p
+                id={label_id}
+                className='deleteLabel'>X</p>
+          </li>
+        )
+      })
+    )
 
     return (
       <li
@@ -212,6 +210,9 @@ class NoteIndexItem extends React.Component {
               {body}
             </div>
           </Link>
+          <ul className='note-index-item-label-div'>
+            {noteIndexItemLabelLi}
+          </ul>
           <div style={colorStyle} className='note-index-item-footer-container'>
             <div style={colorStyle} className='note-index-item-footer'>
               <input type='image' className="noteIcon" src={window.addUserButtonUrl}></input>
