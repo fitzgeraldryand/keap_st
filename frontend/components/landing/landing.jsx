@@ -8,6 +8,7 @@ import NoteFormContainer from '../notes/note_form_container.jsx';
 import LabelIndexContainer from '../labels/labels_index_container.jsx';
 import SearchContainer from '../search/search_container.jsx';
 
+
 class Landing extends React.Component {
   constructor(props) {
     super(props);

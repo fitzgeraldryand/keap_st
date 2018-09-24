@@ -148,11 +148,14 @@
   background-color: #0000001f;
   cursor: pointer;
   border-radius: 1px;
+  height: 48px;
 }
 
 .noteHeaderCopy {
   width: 170px;
   text-align: left;
+  height: 48px;
+  line-height: 48px;
 }
 
 .noteHeaderIcon {
