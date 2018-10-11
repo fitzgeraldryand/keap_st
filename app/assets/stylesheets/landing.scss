@@ -112,9 +112,9 @@
 }
 
 .content-main {
-  margin: 60px 0 0 200px;
-  padding: 0 30px;
-  width: calc(100% - 280px);
+  margin: 60px 0 0 166px;
+  padding: 0 80px;
+  width: calc(100% - 180px);
   overflow-y: scroll;
   position: fixed;
   left: 100px;
@@ -142,6 +142,7 @@
   font-size: 13px;
   color: #6b6b6b;
   border-bottom: 1px solid #dddddd;
+  margin-top: 5px;
 }
 
 .noteHeaderContent:hover {
@@ -156,6 +157,7 @@
   text-align: left;
   height: 48px;
   line-height: 48px;
+  display: inline-block;
 }
 
 .noteHeaderIcon {
