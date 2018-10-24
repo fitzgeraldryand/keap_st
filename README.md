@@ -1,3 +1,6 @@
 [Live](http://keapst.ryanfitzgerald.io/#/login1)
 
 KeapSt is a full-stack, single-page, note-taking web application inspired by Google Keep. Users sign up; jot down their ideas; and organize them with labels, colors, and more!
+
+![Landing Page](https://raw.fitzgeraldryand.com/fitzgeraldryand/keap_st/master/app/assets/images/KeapSt.png)
+
