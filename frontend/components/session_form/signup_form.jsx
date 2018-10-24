@@ -68,7 +68,7 @@ class SignUpForm extends React.Component {
               <img className="logo" src={window.logoUrl}></img>
               <form className='login-form-box' onSubmit={this.handleSubmit}>
                 <div className='signup-copy'>
-                  <p className='header'> Create your Google Account </p>
+                  <p className='header'> Create your Smeagol Account </p>
                 </div>
                 <br/>
                 <br/>
@@ -111,7 +111,7 @@ class SignUpForm extends React.Component {
             </div>
             <div className='signupImageContainer'>
               <img className="signupImage" src={window.userUrl}></img>
-              <p> One account. All of Google working for you. </p>
+              <p> One account. All of Smeagol working for you. </p>
             </div>
           </div>
         </div>

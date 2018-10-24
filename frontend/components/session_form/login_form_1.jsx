@@ -76,7 +76,7 @@ class LoginForm1 extends React.Component {
             <form className="login-form-box" onSubmit={this.handleSubmit}>
               <div className='login-copy'>
                 <p className='header'> Sign in </p>
-                <p>with your Google Account</p>
+                <p>with your Smeagol Account</p>
               </div>
               <br/>
               <br/>
