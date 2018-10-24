@@ -43,7 +43,7 @@
 }
 
 .header-logo {
-  width: 130px;
+  width: 160px;
   font-weight: 400;
   display: flex;
   flex-direction: row;
@@ -80,6 +80,10 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.logoHolder {
+  padding-top: 3px;
 }
 
 .sidebarContainer {

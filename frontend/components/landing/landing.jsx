@@ -58,7 +58,7 @@ handleRemoveFilter() {
     // const colorStyle = {backgroundColor: this.randomUserColor()};
     const headerArea = (
       <div className="header-logo">
-        <Link to="/" id='homeLink'>
+        <Link to="/" id='homeLink' class="logoHolder">
           <img className="logo" src={window.blackLogoUrl} onClick={() => this.handleRemoveFilter()}></img>
         </Link>
         <br/>
