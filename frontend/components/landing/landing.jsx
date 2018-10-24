@@ -63,7 +63,7 @@ handleRemoveFilter() {
         </Link>
         <br/>
         <Link to="/" id='homeLink' onClick={() => this.handleRemoveFilter()}>
-          Keep
+          KeapSt
         </Link>
       </div>
     );
