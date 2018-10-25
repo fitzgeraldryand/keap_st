@@ -6,6 +6,16 @@ export const selectSortedAllNotes = state => {
   return allSortedNotes.reverse();
 };
 
+export const selectSortedPinnedNotes = state => {
+  const allNotes = selectSortedAllNotes(state);
+  return allNotes.filter(note => note.pinned === true);
+};
+
+export const selectSortedUnpinnedNotes = state => {
+  const allNotes = selectSortedAllNotes(state);
+  return allNotes.filter(note => note.pinned === false);
+};
+
 export const selectSortedAllLabels = state => {
   const allLabels = _.values(state.entities.labels);
   return _.sortBy(allLabels, [function(label) { return label.name; }]);

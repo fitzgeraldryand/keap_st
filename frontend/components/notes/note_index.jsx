@@ -22,6 +22,47 @@ class NoteIndex extends React.Component {
   // }
 
   render() {
+    const unpinned = (
+      <Masonry
+        className='notesIndexIndividualWrapper'>
+          {this.props.unpinnedNotes.map(note =>
+            <NoteIndexItem
+              key={note.id}
+              note={note}
+              labels={this.props.labels}
+              deleteNote={this.props.deleteNote}
+              updateNote={this.props.updateNote}
+              addHiddenNote={this.props.addHiddenNote}
+              hiddenNote={this.props.hiddenNote}
+              createLabelling={this.props.createLabelling}
+              deleteLabelling={this.props.deleteLabelling}
+              fetchNote={this.props.fetchNote}
+              getLabels={this.props.getLabels}
+              labelsObj={this.props.labelsObj}/>)}
+      </Masonry>
+    );
+
+    const pinned = (
+      <Masonry
+        className='notesIndexIndividualWrapper'>
+          {this.props.pinnedNotes.map(note =>
+            <NoteIndexItem
+              key={note.id}
+              note={note}
+              labels={this.props.labels}
+              deleteNote={this.props.deleteNote}
+              updateNote={this.props.updateNote}
+              addHiddenNote={this.props.addHiddenNote}
+              hiddenNote={this.props.hiddenNote}
+              createLabelling={this.props.createLabelling}
+              deleteLabelling={this.props.deleteLabelling}
+              fetchNote={this.props.fetchNote}
+              getLabels={this.props.getLabels}
+              labelsObj={this.props.labelsObj}/>)}
+      </Masonry>
+    );
+
+    debugger
     if (this.props.notes.length === 0) {
       return (
         <div className='lightBulbWrapper'>
@@ -35,25 +76,22 @@ class NoteIndex extends React.Component {
           </div>
         </div>
       );
+    } else if (this.props.pinnedNotes.length === 0) {
+      return (
+        <div className = 'notesIndexWrapper'>{unpinned}</div>
+      );
+    } else if (this.props.unpinnedNotes.length === 0 ){
+      return (
+        <div className = 'notesIndexWrapper'>{pinned}</div>
+      );
     } else {
       return (
-        <Masonry
-          className='notesIndexWrapper'>
-            {this.props.notes.map(note =>
-              <NoteIndexItem
-                key={note.id}
-                note={note}
-                labels={this.props.labels}
-                deleteNote={this.props.deleteNote}
-                updateNote={this.props.updateNote}
-                addHiddenNote={this.props.addHiddenNote}
-                hiddenNote={this.props.hiddenNote}
-                createLabelling={this.props.createLabelling}
-                deleteLabelling={this.props.deleteLabelling}
-                fetchNote={this.props.fetchNote}
-                getLabels={this.props.getLabels}
-                labelsObj={this.props.labelsObj}/>)}
-        </Masonry>
+        <div className = 'notesIndexWrapper'>
+          <p className='pinnedText'> Pinned </p>
+          {pinned}
+          <p className='pinnedText'> Others </p>
+          {unpinned}
+        </div>
       );
     }
   }

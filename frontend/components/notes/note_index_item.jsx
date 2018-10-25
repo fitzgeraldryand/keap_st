@@ -11,6 +11,7 @@ class NoteIndexItem extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+    this.handlePin = this.handlePin.bind(this);
   }
 
   handleDelete() {
@@ -59,6 +60,15 @@ class NoteIndexItem extends React.Component {
         label_id: parseInt(e.currentTarget.id)
       });
     }
+  }
+
+  handlePin(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.updateNote({
+      id: this.props.note.id,
+      pinned: !!!this.props.note.pinned
+    });
   }
 
   render() {
@@ -138,6 +148,22 @@ class NoteIndexItem extends React.Component {
       </div>
     );
 
+    const pinSource = (
+      (this.props.note.pinned === true) ? window.pinBlue : window.pinGray
+    );
+
+    const pin = (
+      <div
+        onClick={(e) => this.handlePin(e)}
+        className='pin'
+        style={{backgroundColor: this.props.note.color}}>
+        <img
+          className="pinImage"
+          src={pinSource}>
+        </img>
+      </div>
+    );
+
     const labelSelectorModalLi = (
       this.props.labels.map((label) => {
         return (
@@ -202,6 +228,7 @@ class NoteIndexItem extends React.Component {
               style={colorStyle}
               className={this.props.note.title === "" ? 'note-index-item-title-nil' : 'note-index-item-title'}>
               {this.props.note.title}
+              {pin}
             </div>
             <div
               onClick={() => this.handleClick()}

@@ -169,7 +169,7 @@ class NoteShow extends React.Component {
 
     const colorPaletteModal = (
       <div className = "colorPaletteDropdownWrapper">
-        <div className="colorPaletteDropdown">
+        <div className="colorPaletteDropdownShow">
           <div className='colorDot' style={{backgroundColor: 'rgb(207, 216, 220)'}}
             onClick={(e) => this.handleDotClick(e)}>
             {this.state.color === 'rgb(207, 216, 220)' ? checkmark : ""}
