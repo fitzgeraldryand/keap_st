@@ -1,3 +1,3 @@
 @users.each do |user|
-  json.set! user.email, true
+  json.set! user.email, user.id
 end

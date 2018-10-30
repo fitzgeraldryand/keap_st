@@ -47,7 +47,22 @@ class Note < ApplicationRecord
     through: :labellings,
     source: :label
 
+  has_many :collaborations,
+    primary_key: :id,
+    foreign_key: :note_id,
+    class_name: 'Collaboration'
+    # inverse_of: :note
+
+  has_many :collaborators,
+    through: :collaborations,
+    source: :collaborator
+
   has_one_attached :photo
 
-  accepts_nested_attributes_for :labellings
+  accepts_nested_attributes_for :labellings, :collaborations
+
+  def collaborator_emails
+    collaborator_emails = [User.find(self.author_id).email]
+    return collaborator_emails + self.collaborators.pluck(:email)
+  end
 end

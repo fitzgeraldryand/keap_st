@@ -20,13 +20,41 @@ class User < ApplicationRecord
     foreign_key: :author_id,
     class_name: 'Note'
 
+  has_many :collaborations,
+    primary_key: :id,
+    foreign_key: :collaborator_id,
+    class_name: 'Collaboration'
+
+  has_many :collaborated_notes,
+    through: :collaborations,
+    source: :note
+
   has_many :labels,
     primary_key: :id,
     foreign_key: :creator_id,
     class_name: 'Label'
 
+  has_many :sent_friendships,
+    primary_key: :id,
+    foreign_key: :user_id,
+    class_name: 'Friendship',
+    dependent: :destroy
+
+  has_many :received_friendships,
+    primary_key: :id,
+    foreign_key: :friend_id,
+    class_name: 'Friendship',
+    dependent: :destroy
+
   after_initialize :ensure_session_token
   attr_reader :password
+
+  def friend_ids
+    sent = self.sent_friendships.pluck(:friend_id)
+    received = self.received_friendships.pluck(:user_id)
+    friend_ids = sent + received
+    return friend_ids
+  end
 
   def self.find_by_credential(email,password)
     user = User.find_by(email: email)

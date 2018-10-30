@@ -62,7 +62,6 @@ class NoteIndex extends React.Component {
       </Masonry>
     );
 
-    debugger
     if (this.props.notes.length === 0) {
       return (
         <div className='lightBulbWrapper'>

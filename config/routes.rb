@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     resources :labels, only: [:create, :index, :destroy, :update]
     resources :labellings, only: [:create]
     delete 'labellings', :to => 'labellings#destroy'
+    resources :collaborations, only: [:create]
+    delete 'collaborations', :to => 'collaborations#destroy'
   end
 
 end

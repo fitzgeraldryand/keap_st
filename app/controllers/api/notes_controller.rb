@@ -46,6 +46,6 @@ class Api::NotesController < ApplicationController
   end
 
   def note_params
-    params.require(:note).permit(:title,:body, :author_id, :color, :tab_index, :pinned, labellings_attributes: [:label_id])
+    params.require(:note).permit(:title,:body, :author_id, :color, :tab_index, :pinned, labellings_attributes: [:label_id], collaborations_attributes: [:collaborator_id])
   end
 end
