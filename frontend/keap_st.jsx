@@ -7,6 +7,7 @@ import {login, logout, getUsers} from './actions/session_actions';
 import * as NoteUtilActions from './actions/note_actions';
 import * as LabelUtilActions from './actions/label_actions.jsx';
 import * as LabellingUtilActions from './actions/labelling_actions.jsx';
+import * as CollaborationUtilActions from './actions/collaboration_actions.jsx';
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -39,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.deleteLabel = LabelUtilActions.deleteLabel;
   window.createLabelling = LabellingUtilActions.createLabelling;
   window.deleteLabelling = LabellingUtilActions.deleteLabelling;
+  window.createCollaboration = CollaborationUtilActions.createCollaboration;
+  window.deleteCollaboration = CollaborationUtilActions.deleteCollaboration;
   //testing end
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store }/>, root);

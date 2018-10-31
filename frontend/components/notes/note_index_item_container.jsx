@@ -10,7 +10,8 @@ const mapStateToProps = (state) => {
   return {
     notes: selectSortedAllNotes(state) || { label_ids: {} },
     labels: selectSortedAllLabels(state) || [],
-    hiddenNote: state.ui.hiddenNoteId
+    currentUser: state.session.email,
+    hiddenNote: state.ui.hiddenUser.hiddenNoteId
   };
 };
 

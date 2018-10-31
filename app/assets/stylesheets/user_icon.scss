@@ -12,6 +12,39 @@
   font-family: 'Source Sans Pro', sans-serif;
 }
 
+.dot-collaborator {
+  border: none;
+  height: 36px;
+  width: 36px;
+  font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
+  line-height: 33px;
+  color: white;
+  font-size: 18px;
+  display: inline-block;
+  font-weight: 10;
+  border-radius: 50%;
+}
+
+.dot-collaborator:hover {
+  cursor: default;
+}
+
+.dot-small {
+  height: 28px;
+  width: 28px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 26px;
+  color: white;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 20;
+  margin: 0 2.5px;
+  // border: 5px solid #fdbd0f;
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
 .dot-active {
   height: 44px;
   width: 44px;

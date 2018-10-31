@@ -1,4 +1,5 @@
 export const createCollaboration = (collaboration) => {
+  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/collaborations',
@@ -14,7 +15,7 @@ export const deleteCollaboration = ({note_id, collaborator_id}) => {
     url: '/api/collaborations',
     data: {
       note_id,
-      label_id
+      collaborator_id
     }
   });
 };

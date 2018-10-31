@@ -38,7 +38,8 @@ class NoteIndex extends React.Component {
               deleteLabelling={this.props.deleteLabelling}
               fetchNote={this.props.fetchNote}
               getLabels={this.props.getLabels}
-              labelsObj={this.props.labelsObj}/>)}
+              labelsObj={this.props.labelsObj}
+              currentUser = {this.props.currentUser}/>)}
       </Masonry>
     );
 
@@ -58,7 +59,8 @@ class NoteIndex extends React.Component {
               deleteLabelling={this.props.deleteLabelling}
               fetchNote={this.props.fetchNote}
               getLabels={this.props.getLabels}
-              labelsObj={this.props.labelsObj}/>)}
+              labelsObj={this.props.labelsObj}
+              currentUser = {this.props.currentUser}/>)}
       </Masonry>
     );
 

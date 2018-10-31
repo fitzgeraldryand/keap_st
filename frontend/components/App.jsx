@@ -6,6 +6,7 @@ import SignUpFormContainer from './session_form/signup_form_container.jsx';
 import LoginForm2 from './session_form/login_form_2.jsx';
 import NoteShowContainer from './notes/note_show_container.jsx';
 import LabelModalContainer from './labels/label_modal_container.jsx';
+import CollaborationsModalContainer from './collaborations/collaborations_modal_container.jsx';
 import {
   Route,
   Redirect,
@@ -24,6 +25,7 @@ const App = () => {
       </Switch>
       <ProtectedRoute path="/" component={LandingContainer} />
       <ProtectedRoute path="/notes/:note_id" component={NoteShowContainer} />
+      <ProtectedRoute path="/collaborations/:note_id" component={CollaborationsModalContainer} />
       <ProtectedRoute path="/labels" component={LabelModalContainer} />
     </div>
   );

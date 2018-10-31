@@ -214,6 +214,24 @@ class NoteIndexItem extends React.Component {
       })
     )
 
+    const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
+
+    const noteIndexItemCollaborators = (
+      this.props.note.collaborator_emails.map((collaborator_email, index) => {
+        if (collaborator_email !== this.props.currentUser) {
+          return (
+            <li
+              id={index}
+              key={index}>
+              <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
+                {collaborator_email.slice(0,1).toUpperCase()}
+              </span>
+            </li>
+          )
+        }
+      })
+    )
+
     return (
       <li
         className="note-index-item-wrapper"
@@ -239,10 +257,13 @@ class NoteIndexItem extends React.Component {
           </Link>
           <ul className='note-index-item-label-div'>
             {noteIndexItemLabelLi}
+            {noteIndexItemCollaborators}
           </ul>
           <div style={colorStyle} className='note-index-item-footer-container'>
             <div style={colorStyle} className='note-index-item-footer'>
-              <input type='image' className="noteIcon" src={window.addUserButtonUrl}></input>
+              <Link to={`/collaborations/${this.props.note.id}`}>
+                <input type='image' className="noteIcon" src={window.addUserButtonUrl} onClick={this.handleClick}></input>
+              </Link>
               <span className="noteIcon" id='colorPaletteIcon'>
                 {colorPaletteModal}
               </span>

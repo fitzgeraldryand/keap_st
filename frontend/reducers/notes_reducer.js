@@ -28,12 +28,12 @@ const notesReducer = (state = {}, action) => {
       return newState3;
     case RECEIVE_COLLABORATION:
       let newState4 = merge({}, state);
-      newState4[action.collaboration.note_id].collaborator_ids.push(action.collaboration.collaborator_id);
+      newState4[action.collaboration.note_id].collaborator_emails.push(action.collaboration.collaborator_email);
       return newState4;
     case REMOVE_COLLABORATION:
       let newState5 = merge({}, state);
-      let collaborationIndex = newState5[action.collaboration.note_id].collaborator_ids.indexOf(action.collaboration.collaborator_id);
-      newState5[action.collaboration.note_id].collabrator_ids.splice(collaborationIndex, 1);
+      let collaborationIndex = newState5[action.collaboration.note_id].collaborator_emails.indexOf(action.collaboration.collaborator_email);
+      newState5[action.collaboration.note_id].collaborator_emails.splice(collaborationIndex, 1);
       return newState5;
     case LOGOUT_CURRENT_USER:
       return {};
