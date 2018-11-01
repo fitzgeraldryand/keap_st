@@ -10,7 +10,7 @@ import {getLabels} from '../../actions/label_actions';
 
 const mapStateToProps = (state) => {
   return {
-    notes: selectSortedAllNotes(state) || { label_ids: [] },
+    notes: selectSortedAllNotes(state) || { label_ids: [], collaborator_emails: [] },
     unpinnedNotes: selectSortedUnpinnedNotes(state) || { label_ids: [] },
     pinnedNotes: selectSortedPinnedNotes(state) || { label_ids: [] },
     labels: selectSortedAllLabels(state) || [],

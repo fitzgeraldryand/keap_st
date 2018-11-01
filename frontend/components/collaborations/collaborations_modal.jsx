@@ -97,6 +97,7 @@ class CollaborationsModal extends React.Component {
             <img
               id={index}
               className="labelIcon2"
+              style={index === 0 ? {visibility: 'hidden'} : {}}
               src={window.garbageUrl}
               onClick={(e) => this.handleDelete(e)}></img>
           </li>

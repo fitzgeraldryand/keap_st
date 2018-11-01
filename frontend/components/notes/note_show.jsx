@@ -237,6 +237,24 @@ class NoteShow extends React.Component {
       })
     )
 
+    const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
+
+    const noteIndexItemCollaborators = (
+      this.props.note.collaborator_emails.map((collaborator_email, index) => {
+        if (collaborator_email !== this.props.currentUser) {
+          return (
+            <li
+              id={index}
+              key={index}>
+              <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
+                {collaborator_email.slice(0,1).toUpperCase()}
+              </span>
+            </li>
+          )
+        }
+      })
+    )
+
 
 
     const dateOptions = {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric'}
@@ -310,6 +328,7 @@ class NoteShow extends React.Component {
           <div className='noteShowUpdate'>
             <ul className='note-index-item-label-div-show'>
               {noteIndexItemLabelLi}
+              {noteIndexItemCollaborators}
             </ul>
             <p className='noteShowUpdateCopy'>
               Edited: {this.props.note.updated_at}

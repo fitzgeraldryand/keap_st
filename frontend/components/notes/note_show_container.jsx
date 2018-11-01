@@ -11,8 +11,9 @@ const mapStateToProps = (state, ownProps) => {
   return {
     labels: selectSortedAllLabels(state) || [],
     labelsObj: state.entities.labels || {},
-    note: state.entities.notes[ownProps.match.params.note_id] || { label_ids: [] },
-    hiddenNote: state.ui.hiddenNote
+    note: state.entities.notes[ownProps.match.params.note_id] || { label_ids: [], collaborator_emails: [] },
+    hiddenNote: state.ui.hiddenNote,
+    currentUser: state.session.email
   };
 };
 
