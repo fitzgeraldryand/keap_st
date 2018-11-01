@@ -26,6 +26,7 @@ class NoteShow extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleCheck = this.handleCheck.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentWillReceiveProps(newProps) {
@@ -45,6 +46,11 @@ class NoteShow extends React.Component {
 
   isClassUpdateForm(element) {
     return element.className === 'updateForm';
+  }
+
+  handleClick() {
+    const noteId = this.props.note.id;
+    this.props.addHiddenNote(noteId);
   }
 
   handleDelete() {
@@ -336,7 +342,9 @@ class NoteShow extends React.Component {
           </div>
           <div className='formBottom'>
             <div className='bottomButtons'>
-              <img className="noteIcon" src={window.addUserButtonUrl}></img>
+              <Link to={`/collaborations/${this.props.note.id}`}>
+                <input type='image' className="noteIcon" src={window.addUserButtonUrl} onClick={this.handleClick}></input>
+              </Link>
               <span className="noteIcon" id='colorPaletteIcon'>
                 {colorPaletteModal}
               </span>
