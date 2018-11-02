@@ -1,5 +1,4 @@
 export const createCollaboration = (collaboration) => {
-  debugger
   return $.ajax({
     method: 'POST',
     url: '/api/collaborations',

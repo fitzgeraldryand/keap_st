@@ -6,13 +6,14 @@ import { merge } from 'lodash';
 class CollaborationsModal extends React.Component {
   constructor(props) {
     super(props);
-    const labelsState = {};
-    // this.props.labels.forEach((label) => {
-    //   labelsState[label.id] = label.name;
-    // });
-    // this.handleSubmit = this.handleSubmit.bind(this);
-    // this.handleDelete = this.handleDelete.bind(this);
+    this.state = {
+      newEmail: "",
+      collaborator_emails_state: this.props.note.collaborator_emails
+    };
+    this.handleSave = this.handleSave.bind(this);
+    this.handleDelete = this.handleDelete.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
   // componentWillReceiveProps(newProps) {
@@ -23,7 +24,13 @@ class CollaborationsModal extends React.Component {
   //   this.setState({labels: labelsState});
   // }
 
-  handleSubmit(e) {
+  componentDidMount() {
+    this.props.fetchNote(this.props.note.id);
+    this.props.getUsers();
+    document.addEventListener('keydown', this.handleKeyDown);
+  }
+
+  handleSave(e) {
     // this.handleCreateSubmit();
     // this.props.labels.forEach((label) => {
     //   this.props.updateLabel({
@@ -34,19 +41,56 @@ class CollaborationsModal extends React.Component {
     this.props.history.push(`/notes/${this.props.note.id}`);
   }
 
-  componentDidMount() {
-    this.props.fetchNote(this.props.note.id);
-    this.props.getUsers();
-    document.addEventListener('keydown', this.handleKeyDown);
+  handleUpdate(e) {
+    this.setState({newEmail: e.currentTarget.value});
   }
+
+  handleAdd() {
+    if (Boolean(this.props.users[this.state.newEmail])) {
+      let userID = this.props.users[this.state.newEmail];
+      this.props.createCollaboration({
+        note_id: this.props.note.id,
+        collaborator_id: userID
+      });
+      this.state.newEmail = "";
+    } else {
+      this.props.receiveCollaborationErrors(['Invalid email']);
+    }
+  }
+
+  handleCancel(e) {
+    //if you've deleted any collaborators, get them back from component state
+    this.state.collaborator_emails_state.forEach((email) => {
+      if (!this.props.note.collaborator_emails.includes(email)) {
+        let userID = this.props.users[email];
+        this.props.createCollaboration({
+          note_id: this.props.note.id,
+          collaborator_id: userID
+        });
+      }
+    });
+    // if you've added any collaborators, remove from DB by checking against component state
+    this.props.note.collaborator_emails.forEach((email) => {
+      if (!this.state.collaborator_emails_state.includes(email)) {
+        let userID = this.props.users[email];
+        this.props.deleteCollaboration({
+          note_id: this.props.note.id,
+          collaborator_id: userID
+        });
+      }
+    });
+  }
+
+
 
   handleKeyDown(e) {
     if (e.key === 'Escape') {
       document.removeEventListener('keydown', this.handleKeyDown);
+      this.handleCancel(e);
       this.props.history.push(`/notes/${this.props.note.id}`);
     } else if (e.key === 'Enter') {
       document.removeEventListener('keydown', this.handleKeyDown);
-      // this.handleSubmit();
+      this.handleAdd();
       this.props.history.push(`/notes/${this.props.note.id}`);
     }
   }
@@ -64,7 +108,6 @@ class CollaborationsModal extends React.Component {
   }
 
   handleDelete(e) {
-    debugger
     let email = this.props.note.collaborator_emails[e.currentTarget.id]
     this.props.deleteCollaboration({
       note_id: this.props.note.id,
@@ -73,9 +116,8 @@ class CollaborationsModal extends React.Component {
   }
 
   render() {
-    debugger
     const modalScreen = (
-      <div className='modal-screen' onClick={(e) => this.handleSubmit(e)}></div>
+      <div className='modal-screen' onClick={(e) => this.handleSave(e)}></div>
     );
 
     const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
@@ -109,20 +151,7 @@ class CollaborationsModal extends React.Component {
     //   <div className='labelContainer'>
     //     <p className='labelContainerCopy'>Edit Labels</p>
     //     <div className='inputDiv'>
-    //       <div className='labelCreaterDiv'>
-    //         <img className="labelIcon2" src={window.addUrl}></img>
-    //         <form
-    //           className='labelForm'
-    //           onSubmit={() => this.handleCreateSubmit()}>
-    //           <input
-    //             type="text"
-    //             value={this.state.newLabel}
-    //             placeholder="Create new label"
-    //             onChange={(e) => this.handleUpdateCreate(e)}
-    //             />
-    //           <button><img className="labelIcon2" src={window.tickUrl}></img></button>
-    //         </form>
-    //       </div>
+
     //       <ul className='labelModalUpdatableUL'>
     //         {labelsForUpdating}
     //       </ul>
@@ -134,13 +163,34 @@ class CollaborationsModal extends React.Component {
         <div>
           {modalScreen}
           <div className='labelContainer'>
+            <p className='labelContainerCopy collabCopy'>Collaborations</p>
             <ul className='labelModalUpdatableUL'>
               {collaborationsForDeleting}
             </ul>
+            <div className='labelCreaterDiv'>
+              <img className="labelIcon2" src={window.addUrl}></img>
+              <form
+                className='labelForm'
+                onSubmit={() => this.handleAdd()}>
+                <input
+                  type="text"
+                  value={this.state.newEmail}
+                  placeholder="Person or email to share with"
+                  onChange={(e) => this.handleUpdate(e)}
+                  />
+                <p className='errors'>{this.renderErrors()}</p>
+                <button><img className="labelIcon2" src={window.tickUrl}></img></button>
+              </form>
+            </div>
             <div className='labelUpdaterFooter'>
               <Link to={`/notes/${this.props.note.id}`}
+                onClick={(e) => this.handleCancel(e)}
                 className='labelUpdaterFooterButton'>
-                <p>DONE</p>
+                <p>CANCEL</p>
+              </Link>
+              <Link to={`/notes/${this.props.note.id}`}
+                className='labelUpdaterFooterButton'>
+                <p>SAVE</p>
               </Link>
             </div>
           </div>
