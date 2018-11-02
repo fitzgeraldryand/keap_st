@@ -14,6 +14,7 @@ class CollaborationsModal extends React.Component {
     this.handleDelete = this.handleDelete.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleAdd = this.handleAdd.bind(this);
+    this.clearErrors = this.clearErrors.bind(this);
   }
 
   // componentWillReceiveProps(newProps) {
@@ -25,24 +26,22 @@ class CollaborationsModal extends React.Component {
   // }
 
   componentDidMount() {
+    this.clearErrors();
     this.props.fetchNote(this.props.note.id);
     this.props.getUsers();
     document.addEventListener('keydown', this.handleKeyDown);
   }
 
   handleSave(e) {
-    // this.handleCreateSubmit();
-    // this.props.labels.forEach((label) => {
-    //   this.props.updateLabel({
-    //     id: label.id,
-    //     name: this.state.labels[label.id]
-    //   });
-    // });
     this.props.history.push(`/notes/${this.props.note.id}`);
+    this.clearErrors();
   }
 
   handleUpdate(e) {
     this.setState({newEmail: e.currentTarget.value});
+    if (this.props.errors.length > 0) {
+      this.clearErrors();
+    }
   }
 
   handleAdd() {
@@ -79,19 +78,21 @@ class CollaborationsModal extends React.Component {
         });
       }
     });
+    this.handleSave(e);
   }
 
-
+  clearErrors () {
+    this.props.receiveNoCollaborationErrors();
+  }
 
   handleKeyDown(e) {
     if (e.key === 'Escape') {
       document.removeEventListener('keydown', this.handleKeyDown);
       this.handleCancel(e);
-      this.props.history.push(`/notes/${this.props.note.id}`);
     } else if (e.key === 'Enter') {
       document.removeEventListener('keydown', this.handleKeyDown);
       this.handleAdd();
-      this.props.history.push(`/notes/${this.props.note.id}`);
+      this.handleSave(e);
     }
   }
 
@@ -178,16 +179,16 @@ class CollaborationsModal extends React.Component {
                   placeholder="Person or email to share with"
                   onChange={(e) => this.handleUpdate(e)}
                   />
-                <p className='errors'>{this.renderErrors()}</p>
                 <button><img className="labelIcon2" src={window.tickUrl}></img></button>
               </form>
             </div>
+            <p className='errors'>{this.renderErrors()}</p>
             <div className='labelUpdaterFooter'>
-              <Link to={`/notes/${this.props.note.id}`}
+              <span
                 onClick={(e) => this.handleCancel(e)}
                 className='labelUpdaterFooterButton'>
                 <p>CANCEL</p>
-              </Link>
+              </span>
               <Link to={`/notes/${this.props.note.id}`}
                 className='labelUpdaterFooterButton'>
                 <p>SAVE</p>
