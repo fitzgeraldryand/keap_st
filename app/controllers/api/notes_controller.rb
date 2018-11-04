@@ -1,5 +1,6 @@
 class Api::NotesController < ApplicationController
   def index
+    #need to handle collaborated notes
     if params[:label_id]
       if params[:label_id] == '-1'
         @notes = current_user.notes.order(tab_index: :desc)
