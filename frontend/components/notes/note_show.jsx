@@ -230,16 +230,18 @@ class NoteShow extends React.Component {
 
     const noteIndexItemLabelLi = (
       this.props.note.label_ids.map((label_id) => {
-        const label = this.props.labelsObj[label_id]
-        return (
-          <li
-            key={label_id}
-            className='shownoteIndexItemLabelLi'>
-            <div className='insideLabelLi'>
-              <p className='showinsideLabelLiP'>{label.name}</p>
-            </div>
-          </li>
-        )
+        if (Boolean(this.props.labelsObj[label_id])) {
+          const label = this.props.labelsObj[label_id]
+          return (
+            <li
+              key={label_id}
+              className='shownoteIndexItemLabelLi'>
+              <div className='insideLabelLi'>
+                <p className='showinsideLabelLiP'>{label.name}</p>
+              </div>
+            </li>
+          )
+        }
       })
     )
 
@@ -247,13 +249,13 @@ class NoteShow extends React.Component {
 
     const noteIndexItemCollaborators = (
       this.props.note.collaborator_emails.map((collaborator_email, index) => {
-        if (collaborator_email !== this.props.currentUser) {
+        if (collaborator_email[0] !== this.props.currentUser) {
           return (
             <li
               id={index}
               key={index}>
               <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
-                {collaborator_email.slice(0,1).toUpperCase()}
+                {collaborator_email[1].slice(0,1).toUpperCase()}
               </span>
             </li>
           )

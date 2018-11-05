@@ -3,15 +3,22 @@ class Api::NotesController < ApplicationController
     #need to handle collaborated notes
     if params[:label_id]
       if params[:label_id] == '-1'
-        @notes = current_user.notes.order(tab_index: :desc)
+        user_notes = current_user.notes.order(tab_index: :desc)
+        collaborator_notes = current_user.collaborated_notes.order(tab_index: :desc)
+        @notes = user_notes + collaborator_notes
       else
-        @notes = Label.find(params[:label_id]).notes.where('author_id = ?', current_user.id).order(tab_index: :desc)
+        @notes = current_user.labels.find(params[:label_id]).notes.order(tab_index: :desc)
       end
     elsif params[:text]
       if params[:text] == ""
-        @notes = current_user.notes.order(tab_index: :desc)
+        user_notes = current_user.notes.order(tab_index: :desc)
+        collaborator_notes = current_user.collaborated_notes.order(tab_index: :desc)
+        @notes = user_notes + collaborator_notes
       else
-        @notes = current_user.notes.where("title ILIKE '%#{params[:text]}%' OR body ILIKE '%#{params[:text]}%'").order(tab_index: :desc)
+        user_notes = current_user.notes
+        collaborator_notes = current_user.collaborated_notes
+        combined = user_notes + collaborator_notes
+        @notes = combined.where("title ILIKE '%#{params[:text]}%' OR body ILIKE '%#{params[:text]}%'").order(tab_index: :desc)
       end
     end
     render :index

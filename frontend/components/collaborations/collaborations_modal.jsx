@@ -8,7 +8,11 @@ class CollaborationsModal extends React.Component {
     super(props);
     this.state = {
       newEmail: "",
-      collaborator_emails_state: this.props.note.collaborator_emails
+      collaborator_emails_state: this.props.note.collaborator_emails.map((el) => {
+        return (
+          el[1]
+        );
+      })
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);

@@ -72,6 +72,9 @@ class NoteIndexItem extends React.Component {
   }
 
   render() {
+
+    debugger
+
     const visibilityStyle = (this.props.note.id === this.props.hiddenNote ? {visibility:'hidden'} : {visibility:'visible'});
 
     const colorStyle = {backgroundColor: this.props.note.color};
@@ -198,19 +201,21 @@ class NoteIndexItem extends React.Component {
 
     const noteIndexItemLabelLi = (
       this.props.note.label_ids.map((label_id) => {
-        const label = this.props.labelsObj[label_id]
-        return (
-          <li
-            id={label_id}
-            key={label_id}
-            onClick={(e)=> this.handleCheck(e)}
-            className='noteIndexItemLabelLi'>
+        if (Boolean(this.props.labelsObj[label_id])) {
+          const label = this.props.labelsObj[label_id]
+          return (
+            <li
+              id={label_id}
+              key={label_id}
+              onClick={(e)=> this.handleCheck(e)}
+              className='noteIndexItemLabelLi'>
               <p className='insideLabelLiP'>{label.name}</p>
               <p
                 id={label_id}
                 className='deleteLabel'>X</p>
-          </li>
-        )
+            </li>
+          )
+        }
       })
     )
 
@@ -218,13 +223,13 @@ class NoteIndexItem extends React.Component {
 
     const noteIndexItemCollaborators = (
       this.props.note.collaborator_emails.map((collaborator_email, index) => {
-        if (collaborator_email !== this.props.currentUser) {
+        if (collaborator_email[0] !== this.props.currentUser) {
           return (
             <li
               id={index}
               key={index}>
               <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
-                {collaborator_email.slice(0,1).toUpperCase()}
+                {collaborator_email[1].slice(0,1).toUpperCase()}
               </span>
             </li>
           )
