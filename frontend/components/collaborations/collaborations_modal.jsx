@@ -8,11 +8,7 @@ class CollaborationsModal extends React.Component {
     super(props);
     this.state = {
       newEmail: "",
-      collaborator_emails_state: this.props.note.collaborator_emails.map((el) => {
-        return (
-          el[1]
-        );
-      })
+      collaborator_emails_state: this.props.note.collaborator_emails
     };
     this.handleSave = this.handleSave.bind(this);
     this.handleDelete = this.handleDelete.bind(this);
@@ -62,6 +58,7 @@ class CollaborationsModal extends React.Component {
   }
 
   handleCancel(e) {
+    debugger
     //if you've deleted any collaborators, get them back from component state
     this.state.collaborator_emails_state.forEach((email) => {
       if (!this.props.note.collaborator_emails.includes(email)) {
@@ -167,23 +164,24 @@ class CollaborationsModal extends React.Component {
     return (
         <div>
           {modalScreen}
-          <div className='labelContainer'>
+          <div className='collabContainer'>
             <p className='labelContainerCopy collabCopy'>Collaborations</p>
             <ul className='labelModalUpdatableUL'>
               {collaborationsForDeleting}
             </ul>
-            <div className='labelCreaterDiv'>
-              <img className="labelIcon2" src={window.addUrl}></img>
+            <div className='collaborationsDeletable'>
+              <img className="collabIcon2" src={window.addUrl}></img>
               <form
-                className='labelForm'
+                className='collabForm'
                 onSubmit={() => this.handleAdd()}>
                 <input
+                  className='collabInput'
                   type="text"
                   value={this.state.newEmail}
                   placeholder="Person or email to share with"
                   onChange={(e) => this.handleUpdate(e)}
                   />
-                <button><img className="labelIcon2" src={window.tickUrl}></img></button>
+                <button><img className="collabIcon2" src={window.tickUrl}></img></button>
               </form>
             </div>
             <p className='errors'>{this.renderErrors()}</p>

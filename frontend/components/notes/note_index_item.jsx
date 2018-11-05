@@ -72,9 +72,6 @@ class NoteIndexItem extends React.Component {
   }
 
   render() {
-
-    debugger
-
     const visibilityStyle = (this.props.note.id === this.props.hiddenNote ? {visibility:'hidden'} : {visibility:'visible'});
 
     const colorStyle = {backgroundColor: this.props.note.color};
@@ -221,15 +218,16 @@ class NoteIndexItem extends React.Component {
 
     const startArr = ['#6B5B95', '#7F4145', '#3F69AA', '#BE9EC9', '#006E6D', '#485167', '#E94B3C'];
 
+    debugger
     const noteIndexItemCollaborators = (
       this.props.note.collaborator_emails.map((collaborator_email, index) => {
-        if (collaborator_email[0] !== this.props.currentUser) {
+        if (this.props.users[collaborator_email] !== this.props.currentUser.id) {
           return (
             <li
               id={index}
               key={index}>
               <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
-                {collaborator_email[1].slice(0,1).toUpperCase()}
+                {collaborator_email.slice(0,1).toUpperCase()}
               </span>
             </li>
           )

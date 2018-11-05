@@ -39,7 +39,8 @@ class NoteIndex extends React.Component {
               fetchNote={this.props.fetchNote}
               getLabels={this.props.getLabels}
               labelsObj={this.props.labelsObj}
-              currentUser = {this.props.currentUser}/>)}
+              currentUser = {this.props.currentUser}
+              users = {this.props.users}/>)}
       </Masonry>
     );
 
@@ -60,7 +61,8 @@ class NoteIndex extends React.Component {
               fetchNote={this.props.fetchNote}
               getLabels={this.props.getLabels}
               labelsObj={this.props.labelsObj}
-              currentUser = {this.props.currentUser}/>)}
+              currentUser = {this.props.currentUser}
+              users = {this.props.users}/>)}
       </Masonry>
     );
 

@@ -249,13 +249,13 @@ class NoteShow extends React.Component {
 
     const noteIndexItemCollaborators = (
       this.props.note.collaborator_emails.map((collaborator_email, index) => {
-        if (collaborator_email[0] !== this.props.currentUser) {
+        if (this.props.users[collaborator_email] !== this.props.currentUser.id) {
           return (
             <li
               id={index}
               key={index}>
               <span className = 'dot-small' style={{backgroundColor: startArr[index]}}>
-                {collaborator_email[1].slice(0,1).toUpperCase()}
+                {collaborator_email.slice(0,1).toUpperCase()}
               </span>
             </li>
           )

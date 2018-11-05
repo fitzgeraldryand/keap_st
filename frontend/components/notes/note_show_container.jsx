@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
     labelsObj: state.entities.labels || {},
     note: state.entities.notes[ownProps.match.params.note_id] || { label_ids: [], collaborator_emails: [] },
     hiddenNote: state.ui.hiddenNote,
-    currentUser: state.session.email
+    currentUser: state.session,
+    users: state.entities.users || {}
   };
 };
 

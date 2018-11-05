@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
     labels: selectSortedAllLabels(state) || [],
     labelsObj: state.entities.labels || {},
     hiddenNote: state.ui.hiddenUser.hiddenNoteId,
-    currentUser: state.session.id
+    currentUser: state.session,
+    users: state.entities.users
   };
 };
 

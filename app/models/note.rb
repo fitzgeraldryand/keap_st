@@ -62,7 +62,7 @@ class Note < ApplicationRecord
   accepts_nested_attributes_for :labellings, :collaborations
 
   def collaborator_emails
-    collaborator_emails = User.where("id = #{self.author_id}").pluck(:id, :email)
-    return (collaborator_emails + self.collaborators.pluck(:id, :email))
+    collaborator_emails = User.where("id = #{self.author_id}").pluck(:email)
+    return (collaborator_emails + self.collaborators.pluck(:email))
   end
 end
